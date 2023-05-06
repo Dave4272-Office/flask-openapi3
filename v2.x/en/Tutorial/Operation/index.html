@@ -441,6 +441,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#operation_id_callback" class="md-nav__link">
+    operation_id_callback
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#extra_form" class="md-nav__link">
     extra_form
   </a>
@@ -944,6 +951,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#operation_id_callback" class="md-nav__link">
+    operation_id_callback
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#extra_form" class="md-nav__link">
     extra_form
   </a>
@@ -1142,6 +1156,26 @@
 <span class="hll">    <span class="n">operation_id</span><span class="o">=</span><span class="s2">&quot;get_book_id&quot;</span>
 </span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_book</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">BookPath</span><span class="p">):</span>
+    <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="operation_id_callback">operation_id_callback<a class="headerlink" href="#operation_id_callback" title="Permanent link">⚓︎</a></h2>
+<p>You can set a custom callback to automatically set <code>operation_id</code> for an api (operation).
+Just add a <code>operation_id_callback</code> param to the constructor of  <code>OpenAPI</code> or <code>APIBlueprint</code> or <code>APIView</code>.
+The example shows setting the default <code>operation_id</code> to be the function name, in this case <code>create_book</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_operation_id_for_path</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">function_name</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">APIBlueprint</span><span class="p">(</span><span class="s1">&#39;book&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span> <span class="n">operation_id_callback</span><span class="o">=</span><span class="n">get_operation_id_for_path</span><span class="p">)</span>
+
+<span class="hll"><span class="nd">@api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/book/&#39;</span><span class="p">)</span>
+</span><span class="k">def</span> <span class="nf">create_book</span><span class="p">(</span><span class="n">body</span><span class="p">:</span> <span class="n">BookBody</span><span class="p">):</span>
     <span class="o">...</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="extra_form">extra_form<a class="headerlink" href="#extra_form" title="Permanent link">⚓︎</a></h2>
