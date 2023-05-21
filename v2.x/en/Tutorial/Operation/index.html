@@ -21,7 +21,7 @@
         <link rel="next" href="../Request/">
       
       <link rel="icon" href="../../../images/logo-blue.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.12">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
     
     
       
@@ -1314,17 +1314,55 @@ The example shows setting the default <code>operation_id</code> to be the functi
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">basic</span> <span class="o">=</span> <span class="n">HTTPBase</span><span class="p">()</span>
-<span class="n">jwt</span> <span class="o">=</span> <span class="n">HTTPBearer</span><span class="p">()</span>
-<span class="n">api_key</span> <span class="o">=</span> <span class="n">APIKey</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;api key&#39;</span><span class="p">)</span>
-<span class="n">oauth2</span> <span class="o">=</span> <span class="n">OAuth2</span><span class="p">(</span><span class="n">flows</span><span class="o">=</span><span class="n">OAuthFlows</span><span class="p">(</span>
-    <span class="n">implicit</span><span class="o">=</span><span class="n">OAuthFlowImplicit</span><span class="p">(</span>
-        <span class="n">authorizationUrl</span><span class="o">=</span><span class="s2">&quot;https://example.com/api/oauth/dialog&quot;</span><span class="p">,</span>
-        <span class="n">scopes</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;write:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;modify pets in your account&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;read:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;read your pets&quot;</span>
-        <span class="p">}</span>
-    <span class="p">)))</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Basic Authentication Sample</span>
+<span class="n">basic</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;basic&quot;</span>
+<span class="p">}</span>
+<span class="c1"># JWT Bearer Sample</span>
+<span class="n">jwt</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;bearer&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;bearerFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span>
+<span class="p">}</span>
+<span class="c1"># API Key Sample</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;apiKey&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;api_key&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;in&quot;</span><span class="p">:</span> <span class="s2">&quot;header&quot;</span>
+<span class="p">}</span>
+<span class="c1"># Implicit OAuth2 Sample</span>
+<span class="n">oauth2</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;flows&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;implicit&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;authorizationUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/api/oauth/dialog&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;scopes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;write:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;modify pets in your account&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;read:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;read your pets&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 <span class="n">security_schemes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;jwt&quot;</span><span class="p">:</span> <span class="n">jwt</span><span class="p">,</span> <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span> <span class="s2">&quot;oauth2&quot;</span><span class="p">:</span> <span class="n">oauth2</span><span class="p">,</span> <span class="s2">&quot;basic&quot;</span><span class="p">:</span> <span class="n">basic</span><span class="p">}</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">OpenAPI</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">security_schemes</span><span class="o">=</span><span class="n">security_schemes</span><span class="p">)</span>
@@ -1484,7 +1522,7 @@ The example shows setting the default <code>operation_id</code> to be the functi
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.footer", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c2be25ad.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.b4d07000.min.js"></script>
       
         <script src="../../../js/db.js"></script>
       

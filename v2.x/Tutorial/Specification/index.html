@@ -21,7 +21,7 @@
         <link rel="next" href="../Operation/">
       
       <link rel="icon" href="../../images/logo-blue.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.12">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
     
     
       
@@ -1138,12 +1138,87 @@ Before that, you should know something about the <a href="https://spec.openapis.
 <p><a class="glightbox" href="../../images/openapi.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="openapi" src="../../images/openapi.png" /></a>
 <a class="glightbox" href="../../assets/image-20210525160157057.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image-20210525160157057" src="../../assets/image-20210525160157057.png" /></a></p>
 <h2 id="security_schemes">security_schemes<a class="headerlink" href="#security_schemes" title="Permanent link">⚓︎</a></h2>
-<p>Like <a href="#info">Info</a>, import <strong><code>HTTPBearer</code></strong> from <strong><code>flask_openapi3</code></strong>, more features see the <a href="https://spec.openapis.org/oas/v3.0.3#security-scheme-object">OpenAPI Specification Security Scheme Object</a>.</p>
+<p>There are some examples for Security Scheme Object,
+more features see the <a href="https://spec.openapis.org/oas/v3.0.3#security-scheme-object">OpenAPI Specification Security Scheme Object</a>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Basic Authentication Sample</span>
+<span class="n">basic</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;basic&quot;</span>
+<span class="p">}</span>
+<span class="c1"># JWT Bearer Sample</span>
+<span class="n">jwt</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;bearer&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;bearerFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span>
+<span class="p">}</span>
+<span class="c1"># API Key Sample</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;apiKey&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;api_key&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;in&quot;</span><span class="p">:</span> <span class="s2">&quot;header&quot;</span>
+<span class="p">}</span>
+<span class="c1"># Implicit OAuth2 Sample</span>
+<span class="n">oauth2</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;flows&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;implicit&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;authorizationUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/api/oauth/dialog&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;scopes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;write:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;modify pets in your account&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;read:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;read your pets&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">security_schemes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;jwt&quot;</span><span class="p">:</span> <span class="n">jwt</span><span class="p">,</span> <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span> <span class="s2">&quot;oauth2&quot;</span><span class="p">:</span> <span class="n">oauth2</span><span class="p">,</span> <span class="s2">&quot;basic&quot;</span><span class="p">:</span> <span class="n">basic</span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
 <p>First, you need to define the <strong>security_schemes</strong> and <strong>security</strong> variable:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">security_schemes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;jwt&quot;</span><span class="p">:</span> <span class="n">HTTPBearer</span><span class="p">(</span><span class="n">bearerFormat</span><span class="o">=</span><span class="s2">&quot;JWT&quot;</span><span class="p">)}</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">jwt</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;bearer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bearerFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span>
+<span class="p">}</span>
+<span class="n">security_schemes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;jwt&quot;</span><span class="p">:</span> <span class="n">jwt</span><span class="p">}</span>
+
 <span class="n">security</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;jwt&quot;</span><span class="p">:</span> <span class="p">[]}]</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">OpenAPI</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">security_schemes</span><span class="o">=</span><span class="n">security_schemes</span><span class="p">)</span>
@@ -1213,9 +1288,12 @@ Before that, you should know something about the <a href="https://spec.openapis.
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">flask_openapi3</span> <span class="kn">import</span> <span class="n">OpenAPI</span><span class="p">,</span> <span class="n">OAuthConfig</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">flask_openapi3</span> <span class="kn">import</span> <span class="n">OpenAPI</span><span class="p">,</span> <span class="n">OAuthConfig</span>
 <span class="kn">from</span> <span class="nn">flask_openapi3</span> <span class="kn">import</span> <span class="n">Info</span>
-<span class="kn">from</span> <span class="nn">flask_openapi3</span> <span class="kn">import</span> <span class="n">OAuth2</span><span class="p">,</span> <span class="n">OAuthFlows</span><span class="p">,</span> <span class="n">OAuthFlowImplicit</span>
 
 <span class="n">info</span> <span class="o">=</span> <span class="n">Info</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;oauth API&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0.0&#39;</span><span class="p">)</span>
 
@@ -1224,14 +1302,19 @@ Before that, you should know something about the <a href="https://spec.openapis.
     <span class="n">clientSecret</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span>
 <span class="p">)</span>
 
-<span class="n">oauth2</span> <span class="o">=</span> <span class="n">OAuth2</span><span class="p">(</span><span class="n">flows</span><span class="o">=</span><span class="n">OAuthFlows</span><span class="p">(</span>
-    <span class="n">implicit</span><span class="o">=</span><span class="n">OAuthFlowImplicit</span><span class="p">(</span>
-        <span class="n">authorizationUrl</span><span class="o">=</span><span class="s2">&quot;https://example.com/api/oauth/dialog&quot;</span><span class="p">,</span>
-        <span class="n">scopes</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;write:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;modify pets in your account&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;read:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;read your pets&quot;</span>
-        <span class="p">}</span>
-    <span class="p">)))</span>
+<span class="n">oauth2</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;flows&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;implicit&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;authorizationUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/api/oauth/dialog&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;scopes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;write:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;modify pets in your account&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;read:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;read your pets&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
 <span class="n">security_schemes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;oauth2&quot;</span><span class="p">:</span> <span class="n">oauth2</span><span class="p">}</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">OpenAPI</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">oauth_config</span><span class="o">=</span><span class="n">oauth_config</span><span class="p">,</span> <span class="n">security_schemes</span><span class="o">=</span><span class="n">security_schemes</span><span class="p">)</span>
@@ -1471,7 +1554,7 @@ Before that, you should know something about the <a href="https://spec.openapis.
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.footer", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c2be25ad.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
       
         <script src="../../js/db.js"></script>
       

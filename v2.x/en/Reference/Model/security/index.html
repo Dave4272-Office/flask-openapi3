@@ -21,7 +21,7 @@
         <link rel="next" href="../tag/">
       
       <link rel="icon" href="../../../../images/logo-blue.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.12">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
     
     
       
@@ -833,6 +833,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#flask_openapi3.models.security.HTTPBearer.type_" class="md-nav__link">
+    type_
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1365,6 +1372,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#flask_openapi3.models.security.HTTPBearer.type_" class="md-nav__link">
+    type_
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1735,13 +1749,33 @@
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIKey</span><span class="p">(</span><span class="n">SecurityBase</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIKey</span><span class="p">(</span><span class="n">SecurityBase</span><span class="p">):</span>
     <span class="n">type_</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">SecuritySchemeType</span><span class="o">.</span><span class="n">apiKey</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">)</span>
     <span class="n">in_</span><span class="p">:</span> <span class="n">APIKeyIn</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">APIKeyIn</span><span class="o">.</span><span class="n">header</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;in&quot;</span><span class="p">)</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;apiKey&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;api_key&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;in&quot;</span><span class="p">:</span> <span class="s2">&quot;header&quot;</span>
+        <span class="p">}</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\n</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> will be deprecated in v3.x, please use </span><span class="se">\n</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;&quot;&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -1763,8 +1797,8 @@
 <code class="highlight language-python"><span class="n">in_</span><span class="p">:</span> <span class="n">APIKeyIn</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">APIKeyIn</span><span class="o">.</span><span class="n">header</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.APIKey.in_" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1802,8 +1836,8 @@
 <code class="highlight language-python"><span class="n">type_</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">SecuritySchemeType</span><span class="o">.</span><span class="n">apiKey</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.APIKey.type_" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1843,10 +1877,10 @@
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIKeyIn</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIKeyIn</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;query&quot;</span>
     <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;header&quot;</span>
     <span class="n">cookie</span> <span class="o">=</span> <span class="s2">&quot;cookie&quot;</span>
@@ -1871,8 +1905,8 @@
 <code class="highlight language-python"><span class="n">cookie</span> <span class="o">=</span> <span class="s1">&#39;cookie&#39;</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.APIKeyIn.cookie" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1891,8 +1925,8 @@
 <code class="highlight language-python"><span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;header&#39;</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.APIKeyIn.header" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1911,8 +1945,8 @@
 <code class="highlight language-python"><span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;query&#39;</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.APIKeyIn.query" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1952,11 +1986,29 @@
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">HTTPBase</span><span class="p">(</span><span class="n">SecurityBase</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">HTTPBase</span><span class="p">(</span><span class="n">SecurityBase</span><span class="p">):</span>
     <span class="n">type_</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">SecuritySchemeType</span><span class="o">.</span><span class="n">http</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">)</span>
     <span class="n">scheme</span> <span class="o">=</span> <span class="s1">&#39;basic&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;basic&quot;</span>
+        <span class="p">}</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\n</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> will be deprecated in v3.x, please use </span><span class="se">\n</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;&quot;&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -1978,8 +2030,8 @@
 <code class="highlight language-python"><span class="n">scheme</span> <span class="o">=</span> <span class="s1">&#39;basic&#39;</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.HTTPBase.scheme" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1998,8 +2050,8 @@
 <code class="highlight language-python"><span class="n">type_</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">SecuritySchemeType</span><span class="o">.</span><span class="n">http</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.HTTPBase.type_" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2033,17 +2085,39 @@
 
   <div class="doc doc-contents ">
       <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="flask_openapi3.models.security.HTTPBase" href="../../../../Reference/Model/security/#flask_openapi3.models.security.HTTPBase">HTTPBase</a></code></p>
+        Bases: <code><a class="autorefs autorefs-internal" title="flask_openapi3.models.security.SecurityBase" href="../../../../Reference/Model/security/#flask_openapi3.models.security.SecurityBase">SecurityBase</a></code></p>
 
 
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">HTTPBearer</span><span class="p">(</span><span class="n">HTTPBase</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">HTTPBearer</span><span class="p">(</span><span class="n">SecurityBase</span><span class="p">):</span>
     <span class="n">scheme</span> <span class="o">=</span> <span class="s2">&quot;bearer&quot;</span>
     <span class="n">bearerFormat</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s1">&#39;JWT&#39;</span><span class="p">)</span>
+    <span class="n">type_</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">SecuritySchemeType</span><span class="o">.</span><span class="n">http</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;bearer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;bearerFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span>
+        <span class="p">}</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\n</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> will be deprecated in v3.x, please use </span><span class="se">\n</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;&quot;&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -2065,8 +2139,8 @@
 <code class="highlight language-python"><span class="n">bearerFormat</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s1">&#39;JWT&#39;</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.HTTPBearer.bearerFormat" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2085,11 +2159,31 @@
 <code class="highlight language-python"><span class="n">scheme</span> <span class="o">=</span> <span class="s1">&#39;bearer&#39;</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.HTTPBearer.scheme" class="headerlink" title="Permanent link">⚓︎</a></h5>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h5 id="flask_openapi3.models.security.HTTPBearer.type_" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">type_</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">SecuritySchemeType</span><span class="o">.</span><span class="n">http</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#flask_openapi3.models.security.HTTPBearer.type_" class="headerlink" title="Permanent link">⚓︎</a></h5>
 
 
   <div class="doc doc-contents ">
@@ -2126,11 +2220,45 @@
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuth2</span><span class="p">(</span><span class="n">SecurityBase</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuth2</span><span class="p">(</span><span class="n">SecurityBase</span><span class="p">):</span>
     <span class="n">type_</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">SecuritySchemeType</span><span class="o">.</span><span class="n">oauth2</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">)</span>
     <span class="n">flows</span><span class="p">:</span> <span class="n">OAuthFlows</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;flows&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;implicit&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;authorizationUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/api/oauth/dialog&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;scopes&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;write:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;modify pets in your account&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;read:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;read your pets&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\n</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> will be deprecated in v3.x, please use </span><span class="se">\n</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;&quot;&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -2171,8 +2299,8 @@
 <code class="highlight language-python"><span class="n">type_</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">SecuritySchemeType</span><span class="o">.</span><span class="n">oauth2</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.OAuth2.type_" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2212,9 +2340,9 @@
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuthFlow</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuthFlow</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="n">refreshUrl</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">scopes</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 </code></pre></div></td></tr></table></div>
@@ -2238,8 +2366,8 @@
 <code class="highlight language-python"><span class="n">refreshUrl</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.OAuthFlow.refreshUrl" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2258,8 +2386,8 @@
 <code class="highlight language-python"><span class="n">scopes</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.OAuthFlow.scopes" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2299,9 +2427,9 @@
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuthFlowAuthorizationCode</span><span class="p">(</span><span class="n">OAuthFlow</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuthFlowAuthorizationCode</span><span class="p">(</span><span class="n">OAuthFlow</span><span class="p">):</span>
     <span class="n">authorizationUrl</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">tokenUrl</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div></td></tr></table></div>
@@ -2384,8 +2512,8 @@
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">57</span>
-<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuthFlowClientCredentials</span><span class="p">(</span><span class="n">OAuthFlow</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">91</span>
+<span class="normal">92</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuthFlowClientCredentials</span><span class="p">(</span><span class="n">OAuthFlow</span><span class="p">):</span>
     <span class="n">tokenUrl</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div></td></tr></table></div>
         </details>
@@ -2448,8 +2576,8 @@
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">49</span>
-<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuthFlowImplicit</span><span class="p">(</span><span class="n">OAuthFlow</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">83</span>
+<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuthFlowImplicit</span><span class="p">(</span><span class="n">OAuthFlow</span><span class="p">):</span>
     <span class="n">authorizationUrl</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div></td></tr></table></div>
         </details>
@@ -2512,8 +2640,8 @@
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">53</span>
-<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuthFlowPassword</span><span class="p">(</span><span class="n">OAuthFlow</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">87</span>
+<span class="normal">88</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuthFlowPassword</span><span class="p">(</span><span class="n">OAuthFlow</span><span class="p">):</span>
     <span class="n">tokenUrl</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div></td></tr></table></div>
         </details>
@@ -2576,11 +2704,11 @@
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuthFlows</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OAuthFlows</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="n">implicit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">OAuthFlowImplicit</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">password</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">OAuthFlowPassword</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">clientCredentials</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">OAuthFlowClientCredentials</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -2606,8 +2734,8 @@
 <code class="highlight language-python"><span class="n">authorizationCode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">OAuthFlowAuthorizationCode</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.OAuthFlows.authorizationCode" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2626,8 +2754,8 @@
 <code class="highlight language-python"><span class="n">clientCredentials</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">OAuthFlowClientCredentials</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.OAuthFlows.clientCredentials" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2646,8 +2774,8 @@
 <code class="highlight language-python"><span class="n">implicit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">OAuthFlowImplicit</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.OAuthFlows.implicit" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2666,8 +2794,8 @@
 <code class="highlight language-python"><span class="n">password</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">OAuthFlowPassword</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.OAuthFlows.password" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2707,11 +2835,29 @@
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OpenIdConnect</span><span class="p">(</span><span class="n">SecurityBase</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OpenIdConnect</span><span class="p">(</span><span class="n">SecurityBase</span><span class="p">):</span>
     <span class="n">type_</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">SecuritySchemeType</span><span class="o">.</span><span class="n">openIdConnect</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">)</span>
     <span class="n">openIdConnectUrl</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;openIdConnect&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;openIdConnectUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;www.demo.com&quot;</span>
+        <span class="p">}</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\n</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> will be deprecated in v3.x, please use </span><span class="se">\n</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;&quot;&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -2752,8 +2898,8 @@
 <code class="highlight language-python"><span class="n">type_</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">SecuritySchemeType</span><span class="o">.</span><span class="n">openIdConnect</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.OpenIdConnect.type_" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2793,9 +2939,9 @@
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SecurityBase</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SecurityBase</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="n">type_</span><span class="p">:</span> <span class="n">SecuritySchemeType</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">)</span>
     <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
@@ -2819,8 +2965,8 @@
 <code class="highlight language-python"><span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.SecurityBase.description" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2839,8 +2985,8 @@
 <code class="highlight language-python"><span class="n">type_</span><span class="p">:</span> <span class="n">SecuritySchemeType</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">Ellipsis</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.SecurityBase.type_" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2880,11 +3026,11 @@
 
         <details class="quote">
           <summary>Source code in <code>flask_openapi3/models/security.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SecuritySchemeType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SecuritySchemeType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
     <span class="n">apiKey</span> <span class="o">=</span> <span class="s2">&quot;apiKey&quot;</span>
     <span class="n">http</span> <span class="o">=</span> <span class="s2">&quot;http&quot;</span>
     <span class="n">oauth2</span> <span class="o">=</span> <span class="s2">&quot;oauth2&quot;</span>
@@ -2910,8 +3056,8 @@
 <code class="highlight language-python"><span class="n">apiKey</span> <span class="o">=</span> <span class="s1">&#39;apiKey&#39;</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.SecuritySchemeType.apiKey" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2930,8 +3076,8 @@
 <code class="highlight language-python"><span class="n">http</span> <span class="o">=</span> <span class="s1">&#39;http&#39;</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.SecuritySchemeType.http" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2950,8 +3096,8 @@
 <code class="highlight language-python"><span class="n">oauth2</span> <span class="o">=</span> <span class="s1">&#39;oauth2&#39;</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.SecuritySchemeType.oauth2" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -2970,8 +3116,8 @@
 <code class="highlight language-python"><span class="n">openIdConnect</span> <span class="o">=</span> <span class="s1">&#39;openIdConnect&#39;</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.security.SecuritySchemeType.openIdConnect" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -3083,7 +3229,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.footer", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.c2be25ad.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.b4d07000.min.js"></script>
       
         <script src="../../../../js/db.js"></script>
       

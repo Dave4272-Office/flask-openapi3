@@ -21,7 +21,7 @@
         <link rel="next" href="../Reference/Scaffold/">
       
       <link rel="icon" href="../../images/logo-blue.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.12">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
     
     
       
@@ -1106,26 +1106,68 @@
 <span class="normal">116</span>
 <span class="normal">117</span>
 <span class="normal">118</span>
-<span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">http</span> <span class="kn">import</span> <span class="n">HTTPStatus</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">http</span> <span class="kn">import</span> <span class="n">HTTPStatus</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
 
 <span class="kn">from</span> <span class="nn">flask_openapi3</span> <span class="kn">import</span> <span class="n">Info</span><span class="p">,</span> <span class="n">Tag</span>
 <span class="kn">from</span> <span class="nn">flask_openapi3</span> <span class="kn">import</span> <span class="n">OpenAPI</span>
-<span class="kn">from</span> <span class="nn">flask_openapi3.models.security</span> <span class="kn">import</span> <span class="n">HTTPBearer</span><span class="p">,</span> <span class="n">OAuth2</span><span class="p">,</span> <span class="n">OAuthFlows</span><span class="p">,</span> <span class="n">OAuthFlowImplicit</span>
+
 
 <span class="n">info</span> <span class="o">=</span> <span class="n">Info</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;book API&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0.0&#39;</span><span class="p">)</span>
-<span class="n">jwt</span> <span class="o">=</span> <span class="n">HTTPBearer</span><span class="p">(</span><span class="n">bearerFormat</span><span class="o">=</span><span class="s2">&quot;JWT&quot;</span><span class="p">)</span>
-<span class="n">oauth2</span> <span class="o">=</span> <span class="n">OAuth2</span><span class="p">(</span><span class="n">flows</span><span class="o">=</span><span class="n">OAuthFlows</span><span class="p">(</span>
-    <span class="n">implicit</span><span class="o">=</span><span class="n">OAuthFlowImplicit</span><span class="p">(</span>
-        <span class="n">authorizationUrl</span><span class="o">=</span><span class="s2">&quot;https://example.com/api/oauth/dialog&quot;</span><span class="p">,</span>
-        <span class="n">scopes</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;write:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;modify pets in your account&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;read:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;read your pets&quot;</span>
-        <span class="p">}</span>
-    <span class="p">)))</span>
-<span class="n">security_schemes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;jwt&quot;</span><span class="p">:</span> <span class="n">jwt</span><span class="p">,</span> <span class="s2">&quot;oauth2&quot;</span><span class="p">:</span> <span class="n">oauth2</span><span class="p">}</span>
+<span class="c1"># Basic Authentication Sample</span>
+<span class="n">basic</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;basic&quot;</span>
+<span class="p">}</span>
+<span class="c1"># JWT Bearer Sample</span>
+<span class="n">jwt</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;bearer&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;bearerFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span>
+<span class="p">}</span>
+<span class="c1"># API Key Sample</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;apiKey&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;api_key&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;in&quot;</span><span class="p">:</span> <span class="s2">&quot;header&quot;</span>
+<span class="p">}</span>
+<span class="c1"># Implicit OAuth2 Sample</span>
+<span class="n">oauth2</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;flows&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;implicit&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;authorizationUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/api/oauth/dialog&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;scopes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;write:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;modify pets in your account&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;read:pets&quot;</span><span class="p">:</span> <span class="s2">&quot;read your pets&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">security_schemes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;jwt&quot;</span><span class="p">:</span> <span class="n">jwt</span><span class="p">,</span> <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span> <span class="s2">&quot;oauth2&quot;</span><span class="p">:</span> <span class="n">oauth2</span><span class="p">,</span> <span class="s2">&quot;basic&quot;</span><span class="p">:</span> <span class="n">basic</span><span class="p">}</span>
 
 
 <span class="k">class</span> <span class="nc">NotFoundResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -1178,8 +1220,8 @@
     <span class="n">security</span><span class="o">=</span><span class="n">security</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_book</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">BookPath</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get book</span>
-<span class="sd">    Get some book by id, like:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get a book</span>
+<span class="sd">    to get some book by id, like:</span>
 <span class="sd">    http://localhost:5000/book/3</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">bid</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
@@ -1292,7 +1334,13 @@
 <span class="normal">63</span>
 <span class="normal">64</span>
 <span class="normal">65</span>
-<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
 
@@ -1301,7 +1349,13 @@
 <span class="kn">from</span> <span class="nn">flask_openapi3</span> <span class="kn">import</span> <span class="n">Tag</span><span class="p">,</span> <span class="n">Info</span>
 
 <span class="n">info</span> <span class="o">=</span> <span class="n">Info</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;book API&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0.0&#39;</span><span class="p">)</span>
-<span class="n">security_schemes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;jwt&quot;</span><span class="p">:</span> <span class="n">HTTPBearer</span><span class="p">(</span><span class="n">bearerFormat</span><span class="o">=</span><span class="s2">&quot;JWT&quot;</span><span class="p">)}</span>
+
+<span class="n">jwt</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;bearer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bearerFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span>
+<span class="p">}</span>
+<span class="n">security_schemes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;jwt&quot;</span><span class="p">:</span> <span class="n">jwt</span><span class="p">}</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">OpenAPI</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">security_schemes</span><span class="o">=</span><span class="n">security_schemes</span><span class="p">)</span>
 
@@ -1489,7 +1543,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.footer", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c2be25ad.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
       
         <script src="../../js/db.js"></script>
       
