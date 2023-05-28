@@ -1138,6 +1138,73 @@ you should use <strong><code>register_api</code></strong> instead of  <strong><c
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;description for a created book&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">body</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
+<p><em>New in v2.4.0</em></p>
+<p>You can define a parameter named <code>view_kwargs</code> (the only parameter of the <code>__init__</code> function),
+and using <code>view_kwargs.pop</code> get the required keys for each.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@api_view</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/book&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">BookListAPIView</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">view_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+<span class="nd">@api_view</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/book/&lt;id&gt;&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">BookAPIView</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">view_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">register_api_view</span><span class="p">(</span>
+    <span class="n">api_view</span><span class="p">,</span>
+    <span class="n">view_kwargs</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <h2 id="async-api">Async API<a class="headerlink" href="#async-api" title="Permanent link">⚓︎</a></h2>
 <p><em>New in v2.2.2</em></p>
 <p>Just use <code>async</code> when defining functions. More information goes to <a href="https://flask.palletsprojects.com/en/latest/async-await/">Using async and await — Flask Documentation</a>.</p>
