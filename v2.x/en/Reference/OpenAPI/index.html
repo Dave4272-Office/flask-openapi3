@@ -1180,7 +1180,15 @@
 <span class="normal">270</span>
 <span class="normal">271</span>
 <span class="normal">272</span>
-<span class="normal">273</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OpenAPI</span><span class="p">(</span><span class="n">APIScaffold</span><span class="p">,</span> <span class="n">Flask</span><span class="p">):</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OpenAPI</span><span class="p">(</span><span class="n">APIScaffold</span><span class="p">,</span> <span class="n">Flask</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">import_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -1338,15 +1346,23 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">components_schemas</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">api</span><span class="o">.</span><span class="n">components_schemas</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">api</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">register_api_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_view</span><span class="p">:</span> <span class="n">APIView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Register APIView&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">register_api_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_view</span><span class="p">:</span> <span class="n">APIView</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Register APIView</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            api_view: APIView</span>
+<span class="sd">            view_kwargs: extra view kwargs</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">view_kwargs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">view_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">api_view</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">tag</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag_names</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">tag_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">api_view</span><span class="o">.</span><span class="n">paths</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">components_schemas</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">api_view</span><span class="o">.</span><span class="n">components_schemas</span><span class="p">)</span>
-        <span class="n">api_view</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">api_view</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="o">=</span><span class="n">view_kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_do_decorator</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
@@ -1872,7 +1888,7 @@
 
 
 <h2 id="flask_openapi3.openapi.OpenAPI.register_api_view" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">register_api_view</span><span class="p">(</span><span class="n">api_view</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">register_api_view</span><span class="p">(</span><span class="n">api_view</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#flask_openapi3.openapi.OpenAPI.register_api_view" class="headerlink" title="Permanent link">⚓︎</a></h2>
 
@@ -1880,6 +1896,40 @@
   <div class="doc doc-contents ">
   
       <p>Register APIView</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>api_view</code></td>
+          <td>
+                <code><a class="autorefs autorefs-internal" title="flask_openapi3.view.APIView" href="../../../Reference/APIView/#flask_openapi3.view.APIView">APIView</a></code>
+          </td>
+          <td><p>APIView</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>view_kwargs</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.Dict">Dict</span>[<span title="typing.Any">Any</span>, <span title="typing.Any">Any</span>]]</code>
+          </td>
+          <td><p>extra view kwargs</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
 
       <details class="quote">
         <summary>Source code in <code>flask_openapi3/openapi.py</code></summary>
@@ -1891,15 +1941,31 @@
 <span class="normal">190</span>
 <span class="normal">191</span>
 <span class="normal">192</span>
-<span class="normal">193</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">register_api_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_view</span><span class="p">:</span> <span class="n">APIView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Register APIView&quot;&quot;&quot;</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">register_api_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_view</span><span class="p">:</span> <span class="n">APIView</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Register APIView</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        api_view: APIView</span>
+<span class="sd">        view_kwargs: extra view kwargs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">view_kwargs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">view_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">api_view</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">tag</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag_names</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tag_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">api_view</span><span class="o">.</span><span class="n">paths</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">components_schemas</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">api_view</span><span class="o">.</span><span class="n">components_schemas</span><span class="p">)</span>
-    <span class="n">api_view</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">api_view</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="o">=</span><span class="n">view_kwargs</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
