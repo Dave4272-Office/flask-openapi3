@@ -1053,7 +1053,19 @@
 <span class="normal">164</span>
 <span class="normal">165</span>
 <span class="normal">166</span>
-<span class="normal">167</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIBlueprint</span><span class="p">(</span><span class="n">APIScaffold</span><span class="p">,</span> <span class="n">Blueprint</span><span class="p">):</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIBlueprint</span><span class="p">(</span><span class="n">APIScaffold</span><span class="p">,</span> <span class="n">Blueprint</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -1133,22 +1145,29 @@
             <span class="n">deprecated</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">security</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">servers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Server</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">openapi_extensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">doc_ui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
             <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">HTTPMethod</span><span class="o">.</span><span class="n">GET</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">],</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">],</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">],</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">],</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">],</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">]]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Collect openapi specification information</span>
-<span class="sd">        :param rule: flask route</span>
-<span class="sd">        :param func: flask view_func</span>
-<span class="sd">        :param tags: api tag</span>
-<span class="sd">        :param responses: response model</span>
-<span class="sd">        :param extra_responses: extra response dict</span>
-<span class="sd">        :param security: security name</span>
-<span class="sd">        :param doc_ui: adds openapi document UI(swagger and redoc). defaults to True.</span>
-<span class="sd">        :param deprecated: mark as deprecated support. default to not True.</span>
-<span class="sd">        :param operation_id: unique string used to identify the operation.</span>
-<span class="sd">        :param method: api method</span>
-<span class="sd">        :return:</span>
+<span class="sd">        Arguments:</span>
+<span class="sd">            rule: Flask route</span>
+<span class="sd">            func: Flask view_func</span>
+<span class="sd">            tags: Adds metadata to a single tag.</span>
+<span class="sd">            summary: A short summary of what the operation does.</span>
+<span class="sd">            description: A verbose explanation of the operation behavior.</span>
+<span class="sd">            external_docs: Additional external documentation for this operation.</span>
+<span class="sd">            operation_id: Unique string used to identify the operation.</span>
+<span class="sd">            extra_form: Extra information describing the request body(application/form).</span>
+<span class="sd">            extra_body: Extra information describing the request body(application/json).</span>
+<span class="sd">            responses: response&#39;s model must be pydantic BaseModel.</span>
+<span class="sd">            extra_responses: Extra information for responses.</span>
+<span class="sd">            deprecated: Declares this operation to be deprecated.</span>
+<span class="sd">            security: A declaration of which security mechanisms can be used for this operation.</span>
+<span class="sd">            servers: An alternative server array to service this operation.</span>
+<span class="sd">            openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
+<span class="sd">            doc_ui: Add openapi document UI(swagger, rapidoc and redoc). Defaults to True.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc_ui</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">doc_ui</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">responses</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1159,7 +1178,12 @@
             <span class="n">combine_responses</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">abp_responses</span><span class="p">)</span>
             <span class="n">combine_responses</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">responses</span><span class="p">)</span>
             <span class="c1"># create operation</span>
-            <span class="n">operation</span> <span class="o">=</span> <span class="n">get_operation</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="n">summary</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">)</span>
+            <span class="n">operation</span> <span class="o">=</span> <span class="n">get_operation</span><span class="p">(</span>
+                <span class="n">func</span><span class="p">,</span>
+                <span class="n">summary</span><span class="o">=</span><span class="n">summary</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+                <span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span>
+            <span class="p">)</span>
             <span class="c1"># set external docs</span>
             <span class="n">operation</span><span class="o">.</span><span class="n">externalDocs</span> <span class="o">=</span> <span class="n">external_docs</span>
             <span class="c1"># Unique string used to identify the operation.</span>

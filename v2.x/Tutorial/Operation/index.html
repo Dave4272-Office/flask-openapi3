@@ -483,6 +483,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#openapi_extensions" class="md-nav__link">
+    openapi_extensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#doc_ui" class="md-nav__link">
     doc_ui
   </a>
@@ -993,6 +1000,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#openapi_extensions" class="md-nav__link">
+    openapi_extensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#doc_ui" class="md-nav__link">
     doc_ui
   </a>
@@ -1410,6 +1424,105 @@ The example shows setting the default <code>operation_id</code> to be the functi
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_book</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">BookPath</span><span class="p">):</span>
     <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="openapi_extensions">openapi_extensions<a class="headerlink" href="#openapi_extensions" title="Permanent link">⚓︎</a></h2>
+<p><em>new in v2.4.0</em></p>
+<p>While the OpenAPI Specification tries to accommodate most use cases, 
+additional data can be added to extend the specification at certain points.
+See <a href="https://spec.openapis.org/oas/v3.0.3#specification-extensions">Specification Extensions</a>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">flask_openapi3</span> <span class="kn">import</span> <span class="n">OpenAPI</span><span class="p">,</span> <span class="n">APIBlueprint</span><span class="p">,</span> <span class="n">APIView</span>
+
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">OpenAPI</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">openapi_extensions</span><span class="o">=</span><span class="p">{</span>
+</span>    <span class="s2">&quot;x-google-endpoints&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my-cool-api.endpoints.my-project-id.cloud.goog&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allowCors&quot;</span><span class="p">:</span> <span class="kc">True</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+
+<span class="hll"><span class="n">openapi_extensions</span> <span class="o">=</span> <span class="p">{</span>
+</span>    <span class="s2">&quot;x-google-backend&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;https://&lt;NODE_SERVICE_ID&gt;-&lt;HASH&gt;.a.run.app&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;h2&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span><span class="p">)</span>
+</span><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;ok&quot;</span>
+
+
+<span class="c1"># APIBlueprint</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">APIBlueprint</span><span class="p">(</span><span class="s2">&quot;book&quot;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s2">&quot;/api&quot;</span><span class="p">)</span>
+
+
+<span class="hll"><span class="nd">@api</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/book&#39;</span><span class="p">,</span> <span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span><span class="p">)</span>
+</span><span class="k">def</span> <span class="nf">get_book</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">}</span>
+
+
+<span class="n">app</span><span class="o">.</span><span class="n">register_api</span><span class="p">(</span><span class="n">api</span><span class="p">)</span>
+
+<span class="c1"># APIView</span>
+<span class="n">api_view</span> <span class="o">=</span> <span class="n">APIView</span><span class="p">()</span>
+
+
+<span class="nd">@api_view</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/view/book&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">BookListAPIView</span><span class="p">:</span>
+
+<span class="hll">    <span class="nd">@api_view</span><span class="o">.</span><span class="n">doc</span><span class="p">(</span><span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span><span class="p">)</span>
+</span>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;ok&quot;</span>
+
+
+<span class="n">app</span><span class="o">.</span><span class="n">register_api_view</span><span class="p">(</span><span class="n">api_view</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="doc_ui">doc_ui<a class="headerlink" href="#doc_ui" title="Permanent link">⚓︎</a></h2>
 <p>You can pass <code>doc_ui=False</code> to disable the <code>OpenAPI spec</code> when init <code>OpenAPI</code>.</p>

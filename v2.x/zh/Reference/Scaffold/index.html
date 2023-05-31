@@ -1390,7 +1390,23 @@
 <span class="normal">474</span>
 <span class="normal">475</span>
 <span class="normal">476</span>
-<span class="normal">477</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIScaffold</span><span class="p">(</span><span class="n">Scaffold</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIScaffold</span><span class="p">(</span><span class="n">Scaffold</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">_do_decorator</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">rule</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -1408,6 +1424,7 @@
             <span class="n">deprecated</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">security</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">servers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Server</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">openapi_extensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">doc_ui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
             <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">HTTPMethod</span><span class="o">.</span><span class="n">GET</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">],</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">],</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">],</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">],</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">],</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">]]:</span>
@@ -1505,6 +1522,7 @@
             <span class="n">deprecated</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">security</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">servers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Server</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">openapi_extensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">doc_ui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
             <span class="o">**</span><span class="n">options</span><span class="p">:</span> <span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
@@ -1526,6 +1544,7 @@
 <span class="sd">            deprecated: Declares this operation to be deprecated.</span>
 <span class="sd">            security: A declaration of which security mechanisms can be used for this operation.</span>
 <span class="sd">            servers: An alternative server array to service this operation.</span>
+<span class="sd">            openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
 <span class="sd">            doc_ui: Add openapi document UI(swagger, rapidoc and redoc). Defaults to True.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -1546,6 +1565,7 @@
                     <span class="n">deprecated</span><span class="o">=</span><span class="n">deprecated</span><span class="p">,</span>
                     <span class="n">security</span><span class="o">=</span><span class="n">security</span><span class="p">,</span>
                     <span class="n">servers</span><span class="o">=</span><span class="n">servers</span><span class="p">,</span>
+                    <span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span><span class="p">,</span>
                     <span class="n">doc_ui</span><span class="o">=</span><span class="n">doc_ui</span><span class="p">,</span>
                     <span class="n">method</span><span class="o">=</span><span class="n">HTTPMethod</span><span class="o">.</span><span class="n">GET</span>
                 <span class="p">)</span>
@@ -1574,6 +1594,7 @@
             <span class="n">deprecated</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">security</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">servers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Server</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">openapi_extensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">doc_ui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
             <span class="o">**</span><span class="n">options</span><span class="p">:</span> <span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
@@ -1595,6 +1616,7 @@
 <span class="sd">            deprecated: Declares this operation to be deprecated.</span>
 <span class="sd">            security: A declaration of which security mechanisms can be used for this operation.</span>
 <span class="sd">            servers: An alternative server array to service this operation.</span>
+<span class="sd">            openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
 <span class="sd">            doc_ui: Declares this operation to be shown.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -1615,6 +1637,7 @@
                     <span class="n">deprecated</span><span class="o">=</span><span class="n">deprecated</span><span class="p">,</span>
                     <span class="n">security</span><span class="o">=</span><span class="n">security</span><span class="p">,</span>
                     <span class="n">servers</span><span class="o">=</span><span class="n">servers</span><span class="p">,</span>
+                    <span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span><span class="p">,</span>
                     <span class="n">doc_ui</span><span class="o">=</span><span class="n">doc_ui</span><span class="p">,</span>
                     <span class="n">method</span><span class="o">=</span><span class="n">HTTPMethod</span><span class="o">.</span><span class="n">POST</span>
                 <span class="p">)</span>
@@ -1643,6 +1666,7 @@
             <span class="n">deprecated</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">security</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">servers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Server</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">openapi_extensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">doc_ui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
             <span class="o">**</span><span class="n">options</span><span class="p">:</span> <span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
@@ -1664,6 +1688,7 @@
 <span class="sd">            deprecated: Declares this operation to be deprecated.</span>
 <span class="sd">            security: A declaration of which security mechanisms can be used for this operation.</span>
 <span class="sd">            servers: An alternative server array to service this operation.</span>
+<span class="sd">            openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
 <span class="sd">            doc_ui: Declares this operation to be shown.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -1684,6 +1709,7 @@
                     <span class="n">deprecated</span><span class="o">=</span><span class="n">deprecated</span><span class="p">,</span>
                     <span class="n">security</span><span class="o">=</span><span class="n">security</span><span class="p">,</span>
                     <span class="n">servers</span><span class="o">=</span><span class="n">servers</span><span class="p">,</span>
+                    <span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span><span class="p">,</span>
                     <span class="n">doc_ui</span><span class="o">=</span><span class="n">doc_ui</span><span class="p">,</span>
                     <span class="n">method</span><span class="o">=</span><span class="n">HTTPMethod</span><span class="o">.</span><span class="n">PUT</span>
                 <span class="p">)</span>
@@ -1712,6 +1738,7 @@
             <span class="n">deprecated</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">security</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">servers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Server</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">openapi_extensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">doc_ui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
             <span class="o">**</span><span class="n">options</span><span class="p">:</span> <span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
@@ -1733,6 +1760,7 @@
 <span class="sd">            deprecated: Declares this operation to be deprecated.</span>
 <span class="sd">            security: A declaration of which security mechanisms can be used for this operation.</span>
 <span class="sd">            servers: An alternative server array to service this operation.</span>
+<span class="sd">            openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
 <span class="sd">            doc_ui: Declares this operation to be shown.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -1753,6 +1781,7 @@
                     <span class="n">deprecated</span><span class="o">=</span><span class="n">deprecated</span><span class="p">,</span>
                     <span class="n">security</span><span class="o">=</span><span class="n">security</span><span class="p">,</span>
                     <span class="n">servers</span><span class="o">=</span><span class="n">servers</span><span class="p">,</span>
+                    <span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span><span class="p">,</span>
                     <span class="n">doc_ui</span><span class="o">=</span><span class="n">doc_ui</span><span class="p">,</span>
                     <span class="n">method</span><span class="o">=</span><span class="n">HTTPMethod</span><span class="o">.</span><span class="n">DELETE</span>
                 <span class="p">)</span>
@@ -1781,6 +1810,7 @@
             <span class="n">deprecated</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">security</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">servers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Server</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">openapi_extensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">doc_ui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
             <span class="o">**</span><span class="n">options</span><span class="p">:</span> <span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
@@ -1802,6 +1832,7 @@
 <span class="sd">            deprecated: Declares this operation to be deprecated.</span>
 <span class="sd">            security: A declaration of which security mechanisms can be used for this operation.</span>
 <span class="sd">            servers: An alternative server array to service this operation.</span>
+<span class="sd">            openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
 <span class="sd">            doc_ui: Declares this operation to be shown.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -1822,6 +1853,7 @@
                     <span class="n">deprecated</span><span class="o">=</span><span class="n">deprecated</span><span class="p">,</span>
                     <span class="n">security</span><span class="o">=</span><span class="n">security</span><span class="p">,</span>
                     <span class="n">servers</span><span class="o">=</span><span class="n">servers</span><span class="p">,</span>
+                    <span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span><span class="p">,</span>
                     <span class="n">doc_ui</span><span class="o">=</span><span class="n">doc_ui</span><span class="p">,</span>
                     <span class="n">method</span><span class="o">=</span><span class="n">HTTPMethod</span><span class="o">.</span><span class="n">PATCH</span>
                 <span class="p">)</span>
@@ -1853,7 +1885,7 @@
 
 
 <h2 id="flask_openapi3.scaffold.APIScaffold.delete" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">delete</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">external_docs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">operation_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_form</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_body</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">security</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">servers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc_ui</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">delete</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">external_docs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">operation_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_form</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_body</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">security</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">servers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">openapi_extensions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc_ui</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code>
 
 <a href="#flask_openapi3.scaffold.APIScaffold.delete" class="headerlink" title="Permanent link">⚓︎</a></h2>
 
@@ -2005,6 +2037,16 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
           </td>
         </tr>
         <tr>
+          <td><code>openapi_extensions</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.Dict">Dict</span>[str, <span title="typing.Any">Any</span>]]</code>
+          </td>
+          <td><p>Allows extensions to the OpenAPI Schema.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
           <td><code>doc_ui</code></td>
           <td>
                 <code>bool</code>
@@ -2019,17 +2061,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 
       <details class="quote">
         <summary>Source code in <code>flask_openapi3/scaffold.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">341</span>
-<span class="normal">342</span>
-<span class="normal">343</span>
-<span class="normal">344</span>
-<span class="normal">345</span>
-<span class="normal">346</span>
-<span class="normal">347</span>
-<span class="normal">348</span>
-<span class="normal">349</span>
-<span class="normal">350</span>
-<span class="normal">351</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">351</span>
 <span class="normal">352</span>
 <span class="normal">353</span>
 <span class="normal">354</span>
@@ -2086,7 +2118,20 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="normal">405</span>
 <span class="normal">406</span>
 <span class="normal">407</span>
-<span class="normal">408</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">rule</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -2102,6 +2147,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
         <span class="n">deprecated</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">security</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">servers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Server</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">openapi_extensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">doc_ui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="o">**</span><span class="n">options</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
@@ -2123,6 +2169,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="sd">        deprecated: Declares this operation to be deprecated.</span>
 <span class="sd">        security: A declaration of which security mechanisms can be used for this operation.</span>
 <span class="sd">        servers: An alternative server array to service this operation.</span>
+<span class="sd">        openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
 <span class="sd">        doc_ui: Declares this operation to be shown.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -2143,6 +2190,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
                 <span class="n">deprecated</span><span class="o">=</span><span class="n">deprecated</span><span class="p">,</span>
                 <span class="n">security</span><span class="o">=</span><span class="n">security</span><span class="p">,</span>
                 <span class="n">servers</span><span class="o">=</span><span class="n">servers</span><span class="p">,</span>
+                <span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span><span class="p">,</span>
                 <span class="n">doc_ui</span><span class="o">=</span><span class="n">doc_ui</span><span class="p">,</span>
                 <span class="n">method</span><span class="o">=</span><span class="n">HTTPMethod</span><span class="o">.</span><span class="n">DELETE</span>
             <span class="p">)</span>
@@ -2165,7 +2213,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 
 
 <h2 id="flask_openapi3.scaffold.APIScaffold.get" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">external_docs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">operation_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_form</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_body</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">security</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">servers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc_ui</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">external_docs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">operation_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_form</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_body</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">security</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">servers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">openapi_extensions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc_ui</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code>
 
 <a href="#flask_openapi3.scaffold.APIScaffold.get" class="headerlink" title="Permanent link">⚓︎</a></h2>
 
@@ -2317,6 +2365,16 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
           </td>
         </tr>
         <tr>
+          <td><code>openapi_extensions</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.Dict">Dict</span>[str, <span title="typing.Any">Any</span>]]</code>
+          </td>
+          <td><p>Allows extensions to the OpenAPI Schema.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
           <td><code>doc_ui</code></td>
           <td>
                 <code>bool</code>
@@ -2331,8 +2389,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 
       <details class="quote">
         <summary>Source code in <code>flask_openapi3/scaffold.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">134</span>
-<span class="normal">135</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">135</span>
 <span class="normal">136</span>
 <span class="normal">137</span>
 <span class="normal">138</span>
@@ -2398,7 +2455,11 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="normal">198</span>
 <span class="normal">199</span>
 <span class="normal">200</span>
-<span class="normal">201</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">rule</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -2414,6 +2475,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
         <span class="n">deprecated</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">security</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">servers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Server</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">openapi_extensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">doc_ui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="o">**</span><span class="n">options</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
@@ -2435,6 +2497,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="sd">        deprecated: Declares this operation to be deprecated.</span>
 <span class="sd">        security: A declaration of which security mechanisms can be used for this operation.</span>
 <span class="sd">        servers: An alternative server array to service this operation.</span>
+<span class="sd">        openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
 <span class="sd">        doc_ui: Add openapi document UI(swagger, rapidoc and redoc). Defaults to True.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -2455,6 +2518,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
                 <span class="n">deprecated</span><span class="o">=</span><span class="n">deprecated</span><span class="p">,</span>
                 <span class="n">security</span><span class="o">=</span><span class="n">security</span><span class="p">,</span>
                 <span class="n">servers</span><span class="o">=</span><span class="n">servers</span><span class="p">,</span>
+                <span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span><span class="p">,</span>
                 <span class="n">doc_ui</span><span class="o">=</span><span class="n">doc_ui</span><span class="p">,</span>
                 <span class="n">method</span><span class="o">=</span><span class="n">HTTPMethod</span><span class="o">.</span><span class="n">GET</span>
             <span class="p">)</span>
@@ -2477,7 +2541,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 
 
 <h2 id="flask_openapi3.scaffold.APIScaffold.patch" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">patch</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">external_docs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">operation_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_form</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_body</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">security</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">servers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc_ui</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">patch</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">external_docs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">operation_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_form</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_body</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">security</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">servers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">openapi_extensions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc_ui</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code>
 
 <a href="#flask_openapi3.scaffold.APIScaffold.patch" class="headerlink" title="Permanent link">⚓︎</a></h2>
 
@@ -2629,6 +2693,16 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
           </td>
         </tr>
         <tr>
+          <td><code>openapi_extensions</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.Dict">Dict</span>[str, <span title="typing.Any">Any</span>]]</code>
+          </td>
+          <td><p>Allows extensions to the OpenAPI Schema.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
           <td><code>doc_ui</code></td>
           <td>
                 <code>bool</code>
@@ -2643,20 +2717,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 
       <details class="quote">
         <summary>Source code in <code>flask_openapi3/scaffold.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">410</span>
-<span class="normal">411</span>
-<span class="normal">412</span>
-<span class="normal">413</span>
-<span class="normal">414</span>
-<span class="normal">415</span>
-<span class="normal">416</span>
-<span class="normal">417</span>
-<span class="normal">418</span>
-<span class="normal">419</span>
-<span class="normal">420</span>
-<span class="normal">421</span>
-<span class="normal">422</span>
-<span class="normal">423</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">423</span>
 <span class="normal">424</span>
 <span class="normal">425</span>
 <span class="normal">426</span>
@@ -2710,7 +2771,23 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="normal">474</span>
 <span class="normal">475</span>
 <span class="normal">476</span>
-<span class="normal">477</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">patch</span><span class="p">(</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">patch</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">rule</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -2726,6 +2803,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
         <span class="n">deprecated</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">security</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">servers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Server</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">openapi_extensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">doc_ui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="o">**</span><span class="n">options</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
@@ -2747,6 +2825,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="sd">        deprecated: Declares this operation to be deprecated.</span>
 <span class="sd">        security: A declaration of which security mechanisms can be used for this operation.</span>
 <span class="sd">        servers: An alternative server array to service this operation.</span>
+<span class="sd">        openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
 <span class="sd">        doc_ui: Declares this operation to be shown.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -2767,6 +2846,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
                 <span class="n">deprecated</span><span class="o">=</span><span class="n">deprecated</span><span class="p">,</span>
                 <span class="n">security</span><span class="o">=</span><span class="n">security</span><span class="p">,</span>
                 <span class="n">servers</span><span class="o">=</span><span class="n">servers</span><span class="p">,</span>
+                <span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span><span class="p">,</span>
                 <span class="n">doc_ui</span><span class="o">=</span><span class="n">doc_ui</span><span class="p">,</span>
                 <span class="n">method</span><span class="o">=</span><span class="n">HTTPMethod</span><span class="o">.</span><span class="n">PATCH</span>
             <span class="p">)</span>
@@ -2789,7 +2869,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 
 
 <h2 id="flask_openapi3.scaffold.APIScaffold.post" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">post</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">external_docs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">operation_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_form</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_body</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">security</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">servers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc_ui</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">post</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">external_docs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">operation_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_form</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_body</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">security</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">servers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">openapi_extensions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc_ui</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code>
 
 <a href="#flask_openapi3.scaffold.APIScaffold.post" class="headerlink" title="Permanent link">⚓︎</a></h2>
 
@@ -2941,6 +3021,16 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
           </td>
         </tr>
         <tr>
+          <td><code>openapi_extensions</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.Dict">Dict</span>[str, <span title="typing.Any">Any</span>]]</code>
+          </td>
+          <td><p>Allows extensions to the OpenAPI Schema.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
           <td><code>doc_ui</code></td>
           <td>
                 <code>bool</code>
@@ -2955,11 +3045,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 
       <details class="quote">
         <summary>Source code in <code>flask_openapi3/scaffold.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
@@ -3022,7 +3108,14 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="normal">267</span>
 <span class="normal">268</span>
 <span class="normal">269</span>
-<span class="normal">270</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">post</span><span class="p">(</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">post</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">rule</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -3038,6 +3131,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
         <span class="n">deprecated</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">security</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">servers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Server</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">openapi_extensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">doc_ui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="o">**</span><span class="n">options</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
@@ -3059,6 +3153,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="sd">        deprecated: Declares this operation to be deprecated.</span>
 <span class="sd">        security: A declaration of which security mechanisms can be used for this operation.</span>
 <span class="sd">        servers: An alternative server array to service this operation.</span>
+<span class="sd">        openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
 <span class="sd">        doc_ui: Declares this operation to be shown.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -3079,6 +3174,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
                 <span class="n">deprecated</span><span class="o">=</span><span class="n">deprecated</span><span class="p">,</span>
                 <span class="n">security</span><span class="o">=</span><span class="n">security</span><span class="p">,</span>
                 <span class="n">servers</span><span class="o">=</span><span class="n">servers</span><span class="p">,</span>
+                <span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span><span class="p">,</span>
                 <span class="n">doc_ui</span><span class="o">=</span><span class="n">doc_ui</span><span class="p">,</span>
                 <span class="n">method</span><span class="o">=</span><span class="n">HTTPMethod</span><span class="o">.</span><span class="n">POST</span>
             <span class="p">)</span>
@@ -3101,7 +3197,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 
 
 <h2 id="flask_openapi3.scaffold.APIScaffold.put" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">put</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">external_docs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">operation_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_form</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_body</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">security</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">servers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc_ui</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">put</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">external_docs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">operation_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_form</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_body</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_responses</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">security</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">servers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">openapi_extensions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc_ui</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code>
 
 <a href="#flask_openapi3.scaffold.APIScaffold.put" class="headerlink" title="Permanent link">⚓︎</a></h2>
 
@@ -3253,6 +3349,16 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
           </td>
         </tr>
         <tr>
+          <td><code>openapi_extensions</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.Dict">Dict</span>[str, <span title="typing.Any">Any</span>]]</code>
+          </td>
+          <td><p>Allows extensions to the OpenAPI Schema.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
           <td><code>doc_ui</code></td>
           <td>
                 <code>bool</code>
@@ -3267,14 +3373,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 
       <details class="quote">
         <summary>Source code in <code>flask_openapi3/scaffold.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span>
-<span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
-<span class="normal">279</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">279</span>
 <span class="normal">280</span>
 <span class="normal">281</span>
 <span class="normal">282</span>
@@ -3334,7 +3433,17 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="normal">336</span>
 <span class="normal">337</span>
 <span class="normal">338</span>
-<span class="normal">339</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">put</span><span class="p">(</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">put</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">rule</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -3350,6 +3459,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
         <span class="n">deprecated</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">security</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">servers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Server</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">openapi_extensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">doc_ui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="o">**</span><span class="n">options</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
@@ -3371,6 +3481,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="sd">        deprecated: Declares this operation to be deprecated.</span>
 <span class="sd">        security: A declaration of which security mechanisms can be used for this operation.</span>
 <span class="sd">        servers: An alternative server array to service this operation.</span>
+<span class="sd">        openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
 <span class="sd">        doc_ui: Declares this operation to be shown.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -3391,6 +3502,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
                 <span class="n">deprecated</span><span class="o">=</span><span class="n">deprecated</span><span class="p">,</span>
                 <span class="n">security</span><span class="o">=</span><span class="n">security</span><span class="p">,</span>
                 <span class="n">servers</span><span class="o">=</span><span class="n">servers</span><span class="p">,</span>
+                <span class="n">openapi_extensions</span><span class="o">=</span><span class="n">openapi_extensions</span><span class="p">,</span>
                 <span class="n">doc_ui</span><span class="o">=</span><span class="n">doc_ui</span><span class="p">,</span>
                 <span class="n">method</span><span class="o">=</span><span class="n">HTTPMethod</span><span class="o">.</span><span class="n">PUT</span>
             <span class="p">)</span>

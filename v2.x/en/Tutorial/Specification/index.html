@@ -488,6 +488,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#openapi_extensions" class="md-nav__link">
+    openapi_extensions
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1025,6 +1032,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#openapi_extensions" class="md-nav__link">
+    openapi_extensions
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1470,6 +1484,48 @@ more features see the <a href="https://spec.openapis.org/oas/v3.0.3#security-sch
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Something great got better, get excited!&quot;</span>
 <span class="p">)</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">OpenAPI</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">external_docs</span><span class="o">=</span><span class="n">external_docs</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="openapi_extensions">openapi_extensions<a class="headerlink" href="#openapi_extensions" title="Permanent link">⚓︎</a></h2>
+<p><em>new in v2.4.0</em></p>
+<p>While the OpenAPI Specification tries to accommodate most use cases, 
+additional data can be added to extend the specification at certain points.
+See <a href="https://spec.openapis.org/oas/v3.0.3#specification-extensions">Specification Extensions</a>.</p>
+<p>It can also be available in <strong>APIBlueprint</strong> and <strong>APIView</strong>, goto <a href="../Operation/#openapi_extensions">Operation</a>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">flask_openapi3</span> <span class="kn">import</span> <span class="n">OpenAPI</span>
+
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">OpenAPI</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">openapi_extensions</span><span class="o">=</span><span class="p">{</span>
+</span>    <span class="s2">&quot;x-google-endpoints&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my-cool-api.endpoints.my-project-id.cloud.goog&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allowCors&quot;</span><span class="p">:</span> <span class="kc">True</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;ok&quot;</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 
 
