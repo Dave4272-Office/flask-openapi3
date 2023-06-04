@@ -18,7 +18,7 @@
         <link rel="prev" href="../Request/">
       
       
-        <link rel="next" href="../UI_Templates/">
+        <link rel="next" href="../Openapi_extra/">
       
       <link rel="icon" href="../../../images/logo-blue.svg">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
@@ -452,6 +452,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Openapi_extra/" class="md-nav__link">
+        OpenAPI Extra
+      </a>
     </li>
   
 
@@ -913,7 +927,13 @@
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">BookBodyWithID</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">BookBodyWithID</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="n">bid</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;book id&#39;</span><span class="p">)</span>
     <span class="n">age</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
     <span class="n">author</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Author&#39;</span><span class="p">)</span>
@@ -925,8 +945,14 @@
     <span class="n">data</span><span class="p">:</span> <span class="n">BookBodyWithID</span>
 
 
-<span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/book/&lt;int:bid&gt;&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="n">book_tag</span><span class="p">],</span> <span class="n">responses</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;200&quot;</span><span class="p">:</span> <span class="n">BookResponse</span><span class="p">})</span>
-</span><span class="k">def</span> <span class="nf">get_book</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">BookPath</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">BookBody</span><span class="p">):</span>
+<span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/book/&lt;int:bid&gt;&#39;</span><span class="p">,</span> 
+</span>         <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="n">book_tag</span><span class="p">],</span> 
+         <span class="n">responses</span><span class="o">=</span><span class="p">{</span>
+             <span class="s2">&quot;200&quot;</span><span class="p">:</span> <span class="n">BookResponse</span><span class="p">,</span> 
+             <span class="c1"># Version 2.4.0 starts supporting response for dictionary types</span>
+             <span class="s2">&quot;201&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;text/csv&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}}}}</span>
+         <span class="p">})</span>
+<span class="k">def</span> <span class="nf">get_book</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">BookPath</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">BookBody</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;get a book</span>
 <span class="sd">    get book by id, age or author</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -934,6 +960,11 @@
 </code></pre></div></td></tr></table></div>
 <p><a class="glightbox" href="../../assets/image-20210526104627124.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image-20210526104627124" src="../../assets/image-20210526104627124.png" /></a></p>
 <h2 id="extra_responses">extra_responses<a class="headerlink" href="#extra_responses" title="Permanent link">⚓︎</a></h2>
+<p><em>New in v2.4.0</em></p>
+<div class="admonition deprecated-warning warning">
+<p class="admonition-title">Deprecated-warning</p>
+<p><code>extra_responses</code> have been merged into the <code>responses</code>, and <code>extra_responses</code> will be deprecated in v3.x.</p>
+</div>
 <p><em>New in v1.0.0</em></p>
 <p>You can pass to your path operation decorators a parameter <code>extra_responses</code>.</p>
 <p>It receives a <code>dict</code>, the keys are status codes for each response, like <code>200</code>, and the values are other dicts with the
@@ -956,14 +987,14 @@ information for each of them.</p>
     <span class="s1">&#39;/book/&lt;int:bid&gt;&#39;</span><span class="p">,</span>
     <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="n">book_tag</span><span class="p">],</span>
     <span class="n">responses</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;200&quot;</span><span class="p">:</span> <span class="n">BookResponse</span><span class="p">},</span>
-    <span class="n">extra_responses</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;200&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;text/csv&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}}}}},</span>
+    <span class="n">extra_responses</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;201&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;text/csv&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}}}}},</span>
     <span class="n">security</span><span class="o">=</span><span class="n">security</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_book</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">BookPath</span><span class="p">):</span>
     <span class="o">...</span>
 
 
-<span class="nd">@api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/book&#39;</span><span class="p">,</span> <span class="n">extra_responses</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;200&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;text/csv&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}}}}})</span>
+<span class="nd">@api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/book&#39;</span><span class="p">,</span> <span class="n">extra_responses</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;201&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;text/csv&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}}}}})</span>
 <span class="k">def</span> <span class="nf">create_book</span><span class="p">(</span><span class="n">body</span><span class="p">:</span> <span class="n">BookBody</span><span class="p">):</span>
     <span class="o">...</span>
 </code></pre></div></td></tr></table></div>
@@ -1014,13 +1045,13 @@ information for each of them.</p>
         
         
           
-          <a href="../UI_Templates/" class="md-footer__link md-footer__link--next" aria-label="下一页: 自定义模板" rel="next">
+          <a href="../Openapi_extra/" class="md-footer__link md-footer__link--next" aria-label="下一页: OpenAPI Extra" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                自定义模板
+                OpenAPI Extra
               </div>
             </div>
             <div class="md-footer__button md-icon">

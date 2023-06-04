@@ -552,6 +552,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../Openapi_extra/" class="md-nav__link">
+        OpenAPI Extra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../UI_Templates/" class="md-nav__link">
         UI Templates
       </a>
@@ -1402,6 +1416,11 @@ more features see the <a href="https://spec.openapis.org/oas/v3.0.3#security-sch
     <span class="o">...</span>
 </code></pre></div></td></tr></table></div>
 <p>You can also use <a href="../Response/#responses">responses </a> and <a href="../Response/#extra_responses">extra_responses</a> in your api.</p>
+<p><em>New in v2.4.0</em></p>
+<div class="admonition deprecated-warning warning">
+<p class="admonition-title">Deprecated-warning</p>
+<p><code>extra_responses</code> have been merged into the <code>responses</code>, and <code>extra_responses</code> will be deprecated in v3.x.</p>
+</div>
 <h2 id="doc_ui">doc_ui<a class="headerlink" href="#doc_ui" title="Permanent link">⚓︎</a></h2>
 <p>You can pass <code>doc_ui=False</code> to disable the <code>OpenAPI spec</code> when init <code>OpenAPI</code>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">OpenAPI</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">doc_ui</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
