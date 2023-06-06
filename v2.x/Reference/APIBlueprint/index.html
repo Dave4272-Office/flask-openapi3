@@ -1314,7 +1314,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>The name of the blueprint. It Will be prepared to each endpoint name.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The name of the blueprint. It Will be prepared to each endpoint name.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1324,8 +1328,12 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>The name of the blueprint package, usually <code>__name__</code>.
-         This helps locate the <code>root_path</code> for the blueprint.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The name of the blueprint package, usually <code>__name__</code>.
+         This helps locate the <code>root_path</code> for the blueprint.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1335,7 +1343,11 @@
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="flask_openapi3.models.Tag" href="../Model/tag/#flask_openapi3.models.tag.Tag">Tag</a>]]</code>
           </td>
-          <td><p>APIBlueprint tags for every API.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>APIBlueprint tags for every API.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -1345,7 +1357,11 @@
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[<span title="typing.Dict">Dict</span>[str, <span title="typing.List">List</span>[str]]]]</code>
           </td>
-          <td><p>APIBlueprint security for every API.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>APIBlueprint security for every API.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -1355,7 +1371,11 @@
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Dict">Dict</span>[str, <span title="typing.Union">Union</span>[<span title="typing.Type">Type</span>[<span title="pydantic.BaseModel">BaseModel</span>], <span title="typing.Dict">Dict</span>[<span title="typing.Any">Any</span>, <span title="typing.Any">Any</span>], None]]]</code>
           </td>
-          <td><p>API responses should be either a subclass of BaseModel, a dictionary, or None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>API responses should be either a subclass of BaseModel, a dictionary, or None.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -1365,7 +1385,11 @@
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Enable OpenAPI document UI (Swagger UI, Redoc and Rapidoc). Defaults to True.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Enable OpenAPI document UI (Swagger UI, Redoc and Rapidoc). Defaults to True.</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -1375,9 +1399,13 @@
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>Callback function for custom operation_id generation.
+          <td>
+            <div class="doc-md-description">
+              <p>Callback function for custom operation_id generation.
                    Receives name (str), path (str) and method (str) parameters.
-                   Defaults to <code>get_operation_id_for_path</code> from utils</p></td>
+                   Defaults to <code>get_operation_id_for_path</code> from utils</p>
+            </div>
+          </td>
           <td>
                 <code>get_operation_id_for_path</code>
           </td>
@@ -1387,7 +1415,11 @@
           <td>
                 <code><span title="typing.Any">Any</span></code>
           </td>
-          <td><p>Flask Blueprint kwargs</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Flask Blueprint kwargs</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
