@@ -337,14 +337,14 @@
       
       
         <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-          Tutorial
+          Usage
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Tutorial
+          Usage
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -354,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Tutorial/Specification/" class="md-nav__link">
+      <a href="../../../Usage/Specification/" class="md-nav__link">
         Specification
       </a>
     </li>
@@ -368,21 +368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Tutorial/Operation/" class="md-nav__link">
-        Operation
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Tutorial/Request/" class="md-nav__link">
+      <a href="../../../Usage/Request/" class="md-nav__link">
         Request
       </a>
     </li>
@@ -396,7 +382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Tutorial/Response/" class="md-nav__link">
+      <a href="../../../Usage/Response/" class="md-nav__link">
         Response
       </a>
     </li>
@@ -410,8 +396,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Tutorial/Openapi_extra/" class="md-nav__link">
-        OpenAPI Extra
+      <a href="../../../Usage/Route_Operation/" class="md-nav__link">
+        Route Operation
       </a>
     </li>
   
@@ -424,7 +410,21 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Tutorial/UI_Templates/" class="md-nav__link">
+      <a href="../../../Usage/Model_Config/" class="md-nav__link">
+        Model Config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Usage/UI_Templates/" class="md-nav__link">
         UI Templates
       </a>
     </li>
@@ -438,7 +438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Tutorial/JSON/" class="md-nav__link">
+      <a href="../../../Usage/JSON/" class="md-nav__link">
         JSON
       </a>
     </li>
@@ -1094,8 +1094,8 @@
 <code class="highlight language-python"><span class="n">components</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Components</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.APISpec.components" class="headerlink" title="Permanent link">⚓︎</a></h4>
@@ -1114,8 +1114,8 @@
 <code class="highlight language-python"><span class="n">externalDocs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ExternalDocumentation</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.APISpec.externalDocs" class="headerlink" title="Permanent link">⚓︎</a></h4>
@@ -1172,8 +1172,8 @@
 <code class="highlight language-python"><span class="n">paths</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PathItem</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.APISpec.paths" class="headerlink" title="Permanent link">⚓︎</a></h4>
@@ -1192,8 +1192,8 @@
 <code class="highlight language-python"><span class="n">security</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.APISpec.security" class="headerlink" title="Permanent link">⚓︎</a></h4>
@@ -1212,8 +1212,8 @@
 <code class="highlight language-python"><span class="n">servers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Server</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.APISpec.servers" class="headerlink" title="Permanent link">⚓︎</a></h4>
@@ -1232,8 +1232,8 @@
 <code class="highlight language-python"><span class="n">tags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tag</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.APISpec.tags" class="headerlink" title="Permanent link">⚓︎</a></h4>
@@ -1286,8 +1286,8 @@
 <code class="highlight language-python"><span class="n">extra</span> <span class="o">=</span> <span class="s1">&#39;allow&#39;</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#flask_openapi3.models.APISpec.Config.extra" class="headerlink" title="Permanent link">⚓︎</a></h5>

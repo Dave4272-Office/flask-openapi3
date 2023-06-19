@@ -354,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tutorial/Specification/" class="md-nav__link">
+      <a href="../../Usage/Specification/" class="md-nav__link">
         规范
       </a>
     </li>
@@ -368,21 +368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tutorial/Operation/" class="md-nav__link">
-        路由操作
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Tutorial/Request/" class="md-nav__link">
+      <a href="../../Usage/Request/" class="md-nav__link">
         请求
       </a>
     </li>
@@ -396,7 +382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tutorial/Response/" class="md-nav__link">
+      <a href="../../Usage/Response/" class="md-nav__link">
         响应
       </a>
     </li>
@@ -410,8 +396,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tutorial/Openapi_extra/" class="md-nav__link">
-        OpenAPI Extra
+      <a href="../../Usage/Route_Operation/" class="md-nav__link">
+        路由操作
       </a>
     </li>
   
@@ -424,7 +410,21 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tutorial/UI_Templates/" class="md-nav__link">
+      <a href="../../Usage/Model_Config/" class="md-nav__link">
+        模型配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Usage/UI_Templates/" class="md-nav__link">
         自定义模板
       </a>
     </li>
@@ -438,7 +438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tutorial/JSON/" class="md-nav__link">
+      <a href="../../Usage/JSON/" class="md-nav__link">
         JSON
       </a>
     </li>
@@ -1152,10 +1152,7 @@
 <span class="normal">229</span>
 <span class="normal">230</span>
 <span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIView</span><span class="p">:</span>
+<span class="normal">232</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIView</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">url_prefix</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1339,9 +1336,6 @@
 <span class="sd">        Args:</span>
 <span class="sd">            app: An instance of the OpenAPI app.</span>
 <span class="sd">            view_kwargs: Additional keyword arguments to pass to the API views.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">view_kwargs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">view_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
@@ -2057,27 +2051,6 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
     </tbody>
   </table>
 
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>None</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
       <details class="quote">
         <summary>Source code in <code>flask_openapi3/view.py</code></summary>
         <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">203</span>
@@ -2109,19 +2082,13 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="normal">229</span>
 <span class="normal">230</span>
 <span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">:</span> <span class="s2">&quot;OpenAPI&quot;</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="normal">232</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">:</span> <span class="s2">&quot;OpenAPI&quot;</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Register the API views with the given OpenAPI app.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        app: An instance of the OpenAPI app.</span>
 <span class="sd">        view_kwargs: Additional keyword arguments to pass to the API views.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        None</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">view_kwargs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">view_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
