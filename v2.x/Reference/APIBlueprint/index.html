@@ -21,7 +21,7 @@
         <link rel="next" href="../APIView/">
       
       <link rel="icon" href="../../images/logo-blue.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
     
       
@@ -953,7 +953,8 @@
 <span class="normal">191</span>
 <span class="normal">192</span>
 <span class="normal">193</span>
-<span class="normal">194</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIBlueprint</span><span class="p">(</span><span class="n">APIScaffold</span><span class="p">,</span> <span class="n">Blueprint</span><span class="p">):</span>
+<span class="normal">194</span>
+<span class="normal">195</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIBlueprint</span><span class="p">(</span><span class="n">APIScaffold</span><span class="p">,</span> <span class="n">Blueprint</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -976,10 +977,10 @@
 <span class="sd">            abp_tags: APIBlueprint tags for every API.</span>
 <span class="sd">            abp_security: APIBlueprint security for every API.</span>
 <span class="sd">            abp_responses: API responses should be either a subclass of BaseModel, a dictionary, or None.</span>
-<span class="sd">            doc_ui: Enable OpenAPI document UI (Swagger UI, Redoc and Rapidoc). Defaults to True.</span>
+<span class="sd">            doc_ui: Enable OpenAPI document UI (Swagger UI, Redoc, and Rapidoc). Defaults to True.</span>
 <span class="sd">            operation_id_callback: Callback function for custom operation_id generation.</span>
 <span class="sd">                                   Receives name (str), path (str) and method (str) parameters.</span>
-<span class="sd">                                   Defaults to `get_operation_id_for_path` from utils</span>
+<span class="sd">                                   Default to `get_operation_id_for_path` from utils</span>
 <span class="sd">            **kwargs: Flask Blueprint kwargs</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">APIBlueprint</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">import_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1070,7 +1071,8 @@
 <span class="sd">            security: A declaration of which security mechanisms can be used for this operation.</span>
 <span class="sd">            servers: An alternative server array to service this operation.</span>
 <span class="sd">            openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
-<span class="sd">            doc_ui: Add openapi document UI(swagger, rapidoc and redoc). Defaults to True.</span>
+<span class="sd">            doc_ui: Add openapi document UI (swagger, rapidoc and redoc).</span>
+<span class="sd">                    Defaults to True.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc_ui</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">doc_ui</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">responses</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1246,7 +1248,7 @@
           </td>
           <td>
             <div class="doc-md-description">
-              <p>Enable OpenAPI document UI (Swagger UI, Redoc and Rapidoc). Defaults to True.</p>
+              <p>Enable OpenAPI document UI (Swagger UI, Redoc, and Rapidoc). Defaults to True.</p>
             </div>
           </td>
           <td>
@@ -1262,7 +1264,7 @@
             <div class="doc-md-description">
               <p>Callback function for custom operation_id generation.
                    Receives name (str), path (str) and method (str) parameters.
-                   Defaults to <code>get_operation_id_for_path</code> from utils</p>
+                   Default to <code>get_operation_id_for_path</code> from utils</p>
             </div>
           </td>
           <td>
@@ -1353,10 +1355,10 @@
 <span class="sd">        abp_tags: APIBlueprint tags for every API.</span>
 <span class="sd">        abp_security: APIBlueprint security for every API.</span>
 <span class="sd">        abp_responses: API responses should be either a subclass of BaseModel, a dictionary, or None.</span>
-<span class="sd">        doc_ui: Enable OpenAPI document UI (Swagger UI, Redoc and Rapidoc). Defaults to True.</span>
+<span class="sd">        doc_ui: Enable OpenAPI document UI (Swagger UI, Redoc, and Rapidoc). Defaults to True.</span>
 <span class="sd">        operation_id_callback: Callback function for custom operation_id generation.</span>
 <span class="sd">                               Receives name (str), path (str) and method (str) parameters.</span>
-<span class="sd">                               Defaults to `get_operation_id_for_path` from utils</span>
+<span class="sd">                               Default to `get_operation_id_for_path` from utils</span>
 <span class="sd">        **kwargs: Flask Blueprint kwargs</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">APIBlueprint</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">import_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1552,7 +1554,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.footer", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a51614de.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b425cdc4.min.js"></script>
       
         
           <script src="../../js/db.js"></script>

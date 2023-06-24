@@ -21,7 +21,7 @@
         <link rel="next" href="../APIBlueprint/">
       
       <link rel="icon" href="../../../images/logo-blue.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
     
       
@@ -1188,7 +1188,7 @@
 <span class="sd">            doc_ui: Enable OpenAPI document UI (Swagger UI and Redoc). Defaults to True.</span>
 <span class="sd">            doc_expansion: Default expansion setting for operations and tags (&quot;list&quot;, &quot;full&quot;, or &quot;none&quot;).</span>
 <span class="sd">                           See https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md.</span>
-<span class="sd">            doc_prefix: URL prefix used for OpenAPI document and UI. Defaults to &quot;/openapi&quot;.</span>
+<span class="sd">            doc_prefix: URL prefix used for OpenAPI document and UI. Default to &quot;/openapi&quot;</span>
 <span class="sd">            api_doc_url: URL for accessing the OpenAPI specification document in JSON format.</span>
 <span class="sd">                         Defaults to &quot;/openapi.json&quot;.</span>
 <span class="sd">            swagger_url: URL for accessing the Swagger UI documentation. Defaults to &quot;/swagger&quot;.</span>
@@ -1200,7 +1200,7 @@
 <span class="sd">                           See: https://spec.openapis.org/oas/v3.0.3#external-documentation-object.</span>
 <span class="sd">            operation_id_callback: Callback function for custom operation ID generation.</span>
 <span class="sd">                                   Receives name (str), path (str), and method (str) parameters.</span>
-<span class="sd">                                   Defaults to `get_operation_id_for_path` from utils.</span>
+<span class="sd">                                   Default to `get_operation_id_for_path` from utils.</span>
 <span class="sd">            openapi_extensions: Extensions to the OpenAPI Schema.</span>
 <span class="sd">                                See https://spec.openapis.org/oas/v3.0.3#specification-extensions.</span>
 <span class="sd">            **kwargs: Additional kwargs to be passed to Flask.</span>
@@ -1367,7 +1367,7 @@
         <span class="c1"># Update paths with the APIBlueprint&#39;s paths</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">api</span><span class="o">.</span><span class="n">paths</span><span class="p">)</span>
 
-        <span class="c1"># Update components schemas with the APIBlueprint&#39;s components schemas</span>
+        <span class="c1"># Update component schemas with the APIBlueprint&#39;s component schemas</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">components_schemas</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">api</span><span class="o">.</span><span class="n">components_schemas</span><span class="p">)</span>
 
         <span class="c1"># Register the APIBlueprint with the current instance</span>
@@ -1395,7 +1395,7 @@
         <span class="c1"># Update paths with the APIView&#39;s paths</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">api_view</span><span class="o">.</span><span class="n">paths</span><span class="p">)</span>
 
-        <span class="c1"># Update components schemas with the APIView&#39;s components schemas</span>
+        <span class="c1"># Update component schemas with the APIView&#39;s component schemas</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">components_schemas</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">api_view</span><span class="o">.</span><span class="n">components_schemas</span><span class="p">)</span>
 
         <span class="c1"># Register the APIView with the current instance</span>
@@ -1686,7 +1686,7 @@
           </td>
           <td>
             <div class="doc-md-description">
-              <p>URL prefix used for OpenAPI document and UI. Defaults to "/openapi".</p>
+              <p>URL prefix used for OpenAPI document and UI. Default to "/openapi"</p>
             </div>
           </td>
           <td>
@@ -1802,7 +1802,7 @@
             <div class="doc-md-description">
               <p>Callback function for custom operation ID generation.
                    Receives name (str), path (str), and method (str) parameters.
-                   Defaults to <code>get_operation_id_for_path</code> from utils.</p>
+                   Default to <code>get_operation_id_for_path</code> from utils.</p>
             </div>
           </td>
           <td>
@@ -1980,7 +1980,7 @@
 <span class="sd">        doc_ui: Enable OpenAPI document UI (Swagger UI and Redoc). Defaults to True.</span>
 <span class="sd">        doc_expansion: Default expansion setting for operations and tags (&quot;list&quot;, &quot;full&quot;, or &quot;none&quot;).</span>
 <span class="sd">                       See https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md.</span>
-<span class="sd">        doc_prefix: URL prefix used for OpenAPI document and UI. Defaults to &quot;/openapi&quot;.</span>
+<span class="sd">        doc_prefix: URL prefix used for OpenAPI document and UI. Default to &quot;/openapi&quot;</span>
 <span class="sd">        api_doc_url: URL for accessing the OpenAPI specification document in JSON format.</span>
 <span class="sd">                     Defaults to &quot;/openapi.json&quot;.</span>
 <span class="sd">        swagger_url: URL for accessing the Swagger UI documentation. Defaults to &quot;/swagger&quot;.</span>
@@ -1992,7 +1992,7 @@
 <span class="sd">                       See: https://spec.openapis.org/oas/v3.0.3#external-documentation-object.</span>
 <span class="sd">        operation_id_callback: Callback function for custom operation ID generation.</span>
 <span class="sd">                               Receives name (str), path (str), and method (str) parameters.</span>
-<span class="sd">                               Defaults to `get_operation_id_for_path` from utils.</span>
+<span class="sd">                               Default to `get_operation_id_for_path` from utils.</span>
 <span class="sd">        openapi_extensions: Extensions to the OpenAPI Schema.</span>
 <span class="sd">                            See https://spec.openapis.org/oas/v3.0.3#specification-extensions.</span>
 <span class="sd">        **kwargs: Additional kwargs to be passed to Flask.</span>
@@ -2134,7 +2134,7 @@
     <span class="c1"># Update paths with the APIBlueprint&#39;s paths</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">api</span><span class="o">.</span><span class="n">paths</span><span class="p">)</span>
 
-    <span class="c1"># Update components schemas with the APIBlueprint&#39;s components schemas</span>
+    <span class="c1"># Update component schemas with the APIBlueprint&#39;s component schemas</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">components_schemas</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">api</span><span class="o">.</span><span class="n">components_schemas</span><span class="p">)</span>
 
     <span class="c1"># Register the APIBlueprint with the current instance</span>
@@ -2251,7 +2251,7 @@
     <span class="c1"># Update paths with the APIView&#39;s paths</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">api_view</span><span class="o">.</span><span class="n">paths</span><span class="p">)</span>
 
-    <span class="c1"># Update components schemas with the APIView&#39;s components schemas</span>
+    <span class="c1"># Update component schemas with the APIView&#39;s component schemas</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">components_schemas</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">api_view</span><span class="o">.</span><span class="n">components_schemas</span><span class="p">)</span>
 
     <span class="c1"># Register the APIView with the current instance</span>
@@ -2352,7 +2352,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.footer", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a51614de.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.b425cdc4.min.js"></script>
       
         
           <script src="../../../js/db.js"></script>

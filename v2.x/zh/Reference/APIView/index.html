@@ -21,7 +21,7 @@
         <link rel="next" href="../Models/">
       
       <link rel="icon" href="../../../images/logo-blue.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
     
       
@@ -1011,7 +1011,8 @@
 <span class="normal">229</span>
 <span class="normal">230</span>
 <span class="normal">231</span>
-<span class="normal">232</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIView</span><span class="p">:</span>
+<span class="normal">232</span>
+<span class="normal">233</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">APIView</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">url_prefix</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1032,7 +1033,7 @@
 <span class="sd">            doc_ui: Enable OpenAPI document UI (Swagger UI and Redoc). Defaults to True.</span>
 <span class="sd">            operation_id_callback: Callback function for custom operation_id generation.</span>
 <span class="sd">                                   Receives name (str), path (str) and method (str) parameters.</span>
-<span class="sd">                                   Defaults to `get_operation_id_for_path` from utils</span>
+<span class="sd">                                   Default to `get_operation_id_for_path` from utils</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">url_prefix</span> <span class="o">=</span> <span class="n">url_prefix</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">view_tags</span> <span class="o">=</span> <span class="n">view_tags</span> <span class="ow">or</span> <span class="p">[]</span>
@@ -1123,7 +1124,8 @@
 <span class="sd">            security: A declaration of which security mechanisms can be used for this operation.</span>
 <span class="sd">            servers: An alternative server array to service this operation.</span>
 <span class="sd">            openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
-<span class="sd">            doc_ui: Add openapi document UI(swagger, rapidoc and redoc). Defaults to True.</span>
+<span class="sd">            doc_ui: Add openapi document UI (swagger, rapidoc, and redoc).</span>
+<span class="sd">                    Default to True.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">extra_form</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1337,7 +1339,7 @@
             <div class="doc-md-description">
               <p>Callback function for custom operation_id generation.
                    Receives name (str), path (str) and method (str) parameters.
-                   Defaults to <code>get_operation_id_for_path</code> from utils</p>
+                   Default to <code>get_operation_id_for_path</code> from utils</p>
             </div>
           </td>
           <td>
@@ -1402,7 +1404,7 @@
 <span class="sd">        doc_ui: Enable OpenAPI document UI (Swagger UI and Redoc). Defaults to True.</span>
 <span class="sd">        operation_id_callback: Callback function for custom operation_id generation.</span>
 <span class="sd">                               Receives name (str), path (str) and method (str) parameters.</span>
-<span class="sd">                               Defaults to `get_operation_id_for_path` from utils</span>
+<span class="sd">                               Default to `get_operation_id_for_path` from utils</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">url_prefix</span> <span class="o">=</span> <span class="n">url_prefix</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">view_tags</span> <span class="o">=</span> <span class="n">view_tags</span> <span class="ow">or</span> <span class="p">[]</span>
@@ -1637,7 +1639,8 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
           </td>
           <td>
             <div class="doc-md-description">
-              <p>Add openapi document UI(swagger, rapidoc and redoc). Defaults to True.</p>
+              <p>Add openapi document UI (swagger, rapidoc, and redoc).
+    Default to True.</p>
             </div>
           </td>
           <td>
@@ -1748,7 +1751,8 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="normal">198</span>
 <span class="normal">199</span>
 <span class="normal">200</span>
-<span class="normal">201</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">doc</span><span class="p">(</span>
+<span class="normal">201</span>
+<span class="normal">202</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">doc</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">tags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tag</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1784,7 +1788,8 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="sd">        security: A declaration of which security mechanisms can be used for this operation.</span>
 <span class="sd">        servers: An alternative server array to service this operation.</span>
 <span class="sd">        openapi_extensions: Allows extensions to the OpenAPI Schema.</span>
-<span class="sd">        doc_ui: Add openapi document UI(swagger, rapidoc and redoc). Defaults to True.</span>
+<span class="sd">        doc_ui: Add openapi document UI (swagger, rapidoc, and redoc).</span>
+<span class="sd">                Default to True.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">extra_form</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1912,8 +1917,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 
       <details class="quote">
         <summary>Source code in <code>flask_openapi3/view.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">203</span>
-<span class="normal">204</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">204</span>
 <span class="normal">205</span>
 <span class="normal">206</span>
 <span class="normal">207</span>
@@ -1941,7 +1945,8 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 <span class="normal">229</span>
 <span class="normal">230</span>
 <span class="normal">231</span>
-<span class="normal">232</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">:</span> <span class="s2">&quot;OpenAPI&quot;</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="normal">232</span>
+<span class="normal">233</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">:</span> <span class="s2">&quot;OpenAPI&quot;</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Register the API views with the given OpenAPI app.</span>
 
@@ -2166,7 +2171,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.footer", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a51614de.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.b425cdc4.min.js"></script>
       
         
           <script src="../../../js/db.js"></script>
