@@ -21,7 +21,7 @@
         <link rel="next" href="../APIView/">
       
       <link rel="icon" href="../../../images/logo-blue.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.eebd395e.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
@@ -765,21 +765,20 @@
 
 
 <h2 id="flask_openapi3.APIBlueprint" class="doc doc-heading">
-        <code>APIBlueprint</code>
+          <code>APIBlueprint</code>
 
 
 <a href="#flask_openapi3.APIBlueprint" class="headerlink" title="Permanent link">⚓︎</a></h2>
 
 
   <div class="doc doc-contents first">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="flask_openapi3.scaffold.APIScaffold" href="../../../Reference/Scaffold/#flask_openapi3.scaffold.APIScaffold">APIScaffold</a></code>, <code><span title="flask.Blueprint">Blueprint</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="flask_openapi3.scaffold.APIScaffold" href="../../../Reference/Scaffold/#flask_openapi3.scaffold.APIScaffold">APIScaffold</a></code>, <code><span title="flask.Blueprint">Blueprint</span></code></p>
 
 
-
-        <details class="quote">
-          <summary>Source code in <code>flask_openapi3/blueprint.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 19</span>
+            <details class="quote">
+              <summary>Source code in <code>flask_openapi3/blueprint.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 19</span>
 <span class="normal"> 20</span>
 <span class="normal"> 21</span>
 <span class="normal"> 22</span>
@@ -1113,11 +1112,12 @@
             <span class="n">header</span><span class="p">,</span> <span class="n">cookie</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">body</span> <span class="o">=</span> <span class="n">parse_parameters</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">doc_ui</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">header</span><span class="p">,</span> <span class="n">cookie</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">body</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
   <div class="doc doc-children">
+
 
 
 
@@ -1140,6 +1140,8 @@
   <div class="doc doc-contents ">
   
       <p>Based on Flask Blueprint</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1250,7 +1252,7 @@
             </div>
           </td>
           <td>
-                <code>get_operation_id_for_path</code>
+                <code><span title="flask_openapi3.utils.get_operation_id_for_path">get_operation_id_for_path</span></code>
           </td>
         </tr>
         <tr>
@@ -1270,9 +1272,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>flask_openapi3/blueprint.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
+          <details class="quote">
+            <summary>Source code in <code>flask_openapi3/blueprint.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
@@ -1360,10 +1362,11 @@
     <span class="c1"># Set the operation ID callback function</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">operation_id_callback</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="n">operation_id_callback</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1379,9 +1382,9 @@
   
       <p>Register a nested APIBlueprint</p>
 
-      <details class="quote">
-        <summary>Source code in <code>flask_openapi3/blueprint.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
+          <details class="quote">
+            <summary>Source code in <code>flask_openapi3/blueprint.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
 <span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
@@ -1429,7 +1432,7 @@
     <span class="c1"># Register the nested APIBlueprint as a blueprint</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">api</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

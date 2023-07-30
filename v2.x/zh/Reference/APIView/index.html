@@ -21,7 +21,7 @@
         <link rel="next" href="../Models/">
       
       <link rel="icon" href="../../../images/logo-blue.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.eebd395e.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
@@ -793,7 +793,7 @@
 
 
 <h2 id="flask_openapi3.view.APIView" class="doc doc-heading">
-        <code>APIView</code>
+          <code>APIView</code>
 
 
 <a href="#flask_openapi3.view.APIView" class="headerlink" title="Permanent link">⚓︎</a></h2>
@@ -802,10 +802,9 @@
   <div class="doc doc-contents first">
 
 
-
-        <details class="quote">
-          <summary>Source code in <code>flask_openapi3/view.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 25</span>
+            <details class="quote">
+              <summary>Source code in <code>flask_openapi3/view.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 25</span>
 <span class="normal"> 26</span>
 <span class="normal"> 27</span>
 <span class="normal"> 28</span>
@@ -1217,11 +1216,12 @@
                 <span class="p">}</span>
                 <span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">view_func</span><span class="o">=</span><span class="n">view_func</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
   <div class="doc doc-children">
+
 
 
 
@@ -1244,6 +1244,8 @@
   <div class="doc doc-contents ">
   
       <p>Create a class-based view</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1339,15 +1341,15 @@
             </div>
           </td>
           <td>
-                <code>get_operation_id_for_path</code>
+                <code><span title="flask_openapi3.utils.get_operation_id_for_path">get_operation_id_for_path</span></code>
           </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>flask_openapi3/view.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
+          <details class="quote">
+            <summary>Source code in <code>flask_openapi3/view.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
@@ -1415,10 +1417,11 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tag</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">tag_names</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1434,6 +1437,8 @@
   
       <p>Decorator for view method.
 More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-object">https://spec.openapis.org/oas/v3.0.3#operation-object</a></p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1646,9 +1651,9 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>flask_openapi3/view.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 99</span>
+          <details class="quote">
+            <summary>Source code in <code>flask_openapi3/view.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 99</span>
 <span class="normal">100</span>
 <span class="normal">101</span>
 <span class="normal">102</span>
@@ -1850,10 +1855,11 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 
     <span class="k">return</span> <span class="n">decorator</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1868,6 +1874,8 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
   <div class="doc doc-contents ">
   
       <p>Register the API views with the given OpenAPI app.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1911,9 +1919,9 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>flask_openapi3/view.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">201</span>
+          <details class="quote">
+            <summary>Source code in <code>flask_openapi3/view.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">201</span>
 <span class="normal">202</span>
 <span class="normal">203</span>
 <span class="normal">204</span>
@@ -1973,10 +1981,11 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
             <span class="p">}</span>
             <span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">view_func</span><span class="o">=</span><span class="n">view_func</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1992,9 +2001,9 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
   
       <p>Decorator for view class</p>
 
-      <details class="quote">
-        <summary>Source code in <code>flask_openapi3/view.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">61</span>
+          <details class="quote">
+            <summary>Source code in <code>flask_openapi3/view.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">61</span>
 <span class="normal">62</span>
 <span class="normal">63</span>
 <span class="normal">64</span>
@@ -2068,7 +2077,7 @@ More information goto <a href="https://spec.openapis.org/oas/v3.0.3#operation-ob
 
     <span class="k">return</span> <span class="n">wrapper</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

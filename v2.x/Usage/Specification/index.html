@@ -21,7 +21,7 @@
         <link rel="next" href="../Request/">
       
       <link rel="icon" href="../../images/logo-blue.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.eebd395e.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
@@ -495,6 +495,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#validation-error" class="md-nav__link">
+    validation error
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -889,6 +896,13 @@
         <li class="md-nav__item">
   <a href="#openapi_extensions" class="md-nav__link">
     openapi_extensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-error" class="md-nav__link">
+    validation error
   </a>
   
 </li>
@@ -1385,6 +1399,61 @@ See <a href="https://spec.openapis.org/oas/v3.0.3#specification-extensions">Spec
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="validation-error">validation error<a class="headerlink" href="#validation-error" title="Permanent link">⚓︎</a></h2>
+<p><em>new in v2.5.0</em></p>
+<p>You can override validation error response use <code>validation_error_status</code>, <code>validation_error_model</code>
+and <code>validation_error_callback</code>. </p>
+<ul>
+<li>validation_error_status: HTTP Status of the response given when a validation error is detected by pydantic. 
+                           Defaults to 422.</li>
+<li>validation_error_model: Validation error response model for OpenAPI Specification.</li>
+<li>validation_error_callback: Validation error response callback, the return format corresponds to 
+                             the validation_error_model. Receive <code>ValidationError</code> and return <code>Flask Response</code>.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">flask.wrappers</span> <span class="kn">import</span> <span class="n">Response</span> <span class="k">as</span> <span class="n">FlaskResponse</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
+
+<span class="k">class</span> <span class="nc">ValidationErrorModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">code</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">def</span> <span class="nf">validation_error_callback</span><span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">ValidationError</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FlaskResponse</span><span class="p">:</span>
+    <span class="n">validation_error_object</span> <span class="o">=</span> <span class="n">ValidationErrorModel</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;400&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="n">validation_error_object</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;application/json&quot;</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">current_app</span><span class="p">,</span> <span class="s2">&quot;validation_error_status&quot;</span><span class="p">,</span> <span class="mi">422</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">OpenAPI</span><span class="p">(</span>
+    <span class="vm">__name__</span><span class="p">,</span>
+    <span class="n">validation_error_status</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+    <span class="n">validation_error_model</span><span class="o">=</span><span class="n">ValidationErrorModel</span><span class="p">,</span>
+    <span class="n">validation_error_callback</span><span class="o">=</span><span class="n">validation_error_callback</span>
+<span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 
 
