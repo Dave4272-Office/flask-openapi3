@@ -1195,9 +1195,7 @@
 <span class="normal">431</span>
 <span class="normal">432</span>
 <span class="normal">433</span>
-<span class="normal">434</span>
-<span class="normal">435</span>
-<span class="normal">436</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OpenAPI</span><span class="p">(</span><span class="n">APIScaffold</span><span class="p">,</span> <span class="n">Flask</span><span class="p">):</span>
+<span class="normal">434</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OpenAPI</span><span class="p">(</span><span class="n">APIScaffold</span><span class="p">,</span> <span class="n">Flask</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">import_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -1398,13 +1396,11 @@
             <span class="n">openapi</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">openapi_version</span><span class="p">,</span>
             <span class="n">info</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">,</span>
             <span class="n">servers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">severs</span><span class="p">,</span>
+            <span class="n">paths</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">paths</span><span class="p">,</span>
             <span class="n">externalDocs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">external_docs</span>
         <span class="p">)</span>
         <span class="c1"># Set tags</span>
         <span class="n">spec</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="ow">or</span> <span class="kc">None</span>
-
-        <span class="c1"># Set paths</span>
-        <span class="n">spec</span><span class="o">.</span><span class="n">paths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">paths</span>
 
         <span class="c1"># Add ValidationErrorModel to components schemas</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">components_schemas</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">validation_error_model</span><span class="o">.</span><span class="vm">__name__</span><span class="p">]</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">validation_error_model</span><span class="o">.</span><span class="n">schema</span><span class="p">())</span>
@@ -2281,7 +2277,9 @@
 
           <details class="quote">
             <summary>Source code in <code>flask_openapi3/openapi.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">289</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
 <span class="normal">290</span>
 <span class="normal">291</span>
 <span class="normal">292</span>
@@ -2301,9 +2299,7 @@
 <span class="normal">306</span>
 <span class="normal">307</span>
 <span class="normal">308</span>
-<span class="normal">309</span>
-<span class="normal">310</span>
-<span class="normal">311</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">register_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api</span><span class="p">:</span> <span class="n">APIBlueprint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">309</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">register_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api</span><span class="p">:</span> <span class="n">APIBlueprint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Register an APIBlueprint.</span>
 
@@ -2393,7 +2389,9 @@
 
           <details class="quote">
             <summary>Source code in <code>flask_openapi3/openapi.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">313</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
 <span class="normal">314</span>
 <span class="normal">315</span>
 <span class="normal">316</span>
@@ -2417,9 +2415,7 @@
 <span class="normal">334</span>
 <span class="normal">335</span>
 <span class="normal">336</span>
-<span class="normal">337</span>
-<span class="normal">338</span>
-<span class="normal">339</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">register_api_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_view</span><span class="p">:</span> <span class="n">APIView</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">337</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">register_api_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_view</span><span class="p">:</span> <span class="n">APIView</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Register APIView</span>
 
