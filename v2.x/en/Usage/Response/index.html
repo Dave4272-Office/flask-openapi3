@@ -788,15 +788,55 @@
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/book/&lt;int:bid&gt;&#39;</span><span class="p">,</span> 
 </span>         <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="n">book_tag</span><span class="p">],</span> 
          <span class="n">responses</span><span class="o">=</span><span class="p">{</span>
-             <span class="s2">&quot;200&quot;</span><span class="p">:</span> <span class="n">BookResponse</span><span class="p">,</span> 
+             <span class="mi">200</span><span class="p">:</span> <span class="n">BookResponse</span><span class="p">,</span> 
              <span class="c1"># Version 2.4.0 starts supporting response for dictionary types</span>
-             <span class="s2">&quot;201&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;text/csv&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}}}}</span>
+             <span class="mi">201</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;text/csv&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}}}}</span>
          <span class="p">})</span>
 <span class="k">def</span> <span class="nf">get_book</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">BookPath</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">BookBody</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;get a book</span>
 <span class="sd">    get book by id, age or author</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{}}</span>
+</code></pre></div></td></tr></table></div>
+<p><em>New in v2.5.0</em></p>
+<p>Now you can use <code>string</code>, <code>int</code>, and <code>HTTPStatus</code> as response's key.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">http</span> <span class="kn">import</span> <span class="n">HTTPStatus</span>
+
+
+<span class="k">class</span> <span class="nc">BookResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="hll">    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;The message&quot;</span><span class="p">)</span>
+</span>
+<span class="hll">
+</span><span class="nd">@api</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello/&lt;string:name&gt;&quot;</span><span class="p">,</span>
+        <span class="n">responses</span><span class="o">=</span><span class="p">{</span>
+            <span class="n">HTTPStatus</span><span class="o">.</span><span class="n">OK</span><span class="p">:</span> <span class="n">BookResponse</span><span class="p">,</span> 
+            <span class="s2">&quot;201&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;text/csv&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}}}},</span>
+            <span class="mi">204</span><span class="p">:</span> <span class="kc">None</span>
+        <span class="p">})</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">HelloPath</span><span class="p">):</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;Hello </span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;&quot;&quot;</span><span class="p">}</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">message</span><span class="p">),</span> <span class="n">HTTPStatus</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">mimetype</span> <span class="o">=</span> <span class="s2">&quot;application/json&quot;</span>
+    <span class="k">return</span> <span class="n">response</span>
 </code></pre></div></td></tr></table></div>
 <p><a class="glightbox" href="../../assets/image-20210526104627124.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image-20210526104627124" src="../../assets/image-20210526104627124.png" /></a></p>
 <h2 id="extra_responses">extra_responses<a class="headerlink" href="#extra_responses" title="Permanent link">⚓︎</a></h2>

@@ -944,7 +944,7 @@
 <p>If you need the complete Specification, go to <a href="http://127.0.0.1:5000/openapi/openapi.json">http://127.0.0.1:5000/openapi/openapi.json</a></p>
 <h2 id="command-flask-openapi">command: flask openapi<a class="headerlink" href="#command-flask-openapi" title="Permanent link">⚓︎</a></h2>
 <p><em>New in v2.0.0</em></p>
-<p>The <code>flask openapi</code> command will export the OpenAPI Specification to console when you execute the command,</p>
+<p>The <code>flask openapi</code> command will export the OpenAPI Specification to console when you execute the command.</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>flask --app IMPORT openapi
 </code></pre></div></td></tr></table></div>
 where <code>IMPORT</code> is the Flask application, in our case an OpenAPI application, to loan.
@@ -1229,7 +1229,7 @@ more features see the <a href="https://spec.openapis.org/oas/v3.0.3#security-sch
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">OpenAPI</span><span class="p">(</span>
     <span class="vm">__name__</span><span class="p">,</span> 
     <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> 
-<span class="hll">    <span class="n">responses</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;404&quot;</span><span class="p">:</span> <span class="n">NotFoundResponse</span><span class="p">}</span>
+<span class="hll">    <span class="n">responses</span><span class="o">=</span><span class="p">{</span><span class="mi">404</span><span class="p">:</span> <span class="n">NotFoundResponse</span><span class="p">}</span>
 </span><span class="p">)</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
