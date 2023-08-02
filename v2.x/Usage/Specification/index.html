@@ -411,19 +411,6 @@
     security_schemes
   </a>
   
-    <nav class="md-nav" aria-label="security_schemes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#abp_security" class="md-nav__link">
-    abp_security
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -438,18 +425,12 @@
     responses
   </a>
   
-    <nav class="md-nav" aria-label="responses">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#abp_responses" class="md-nav__link">
-    abp_responses
-  </a>
-  
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#abp_responses-view_responses" class="md-nav__link">
+    abp_responses &amp; view_responses
+  </a>
   
 </li>
       
@@ -816,19 +797,6 @@
     security_schemes
   </a>
   
-    <nav class="md-nav" aria-label="security_schemes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#abp_security" class="md-nav__link">
-    abp_security
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -843,18 +811,12 @@
     responses
   </a>
   
-    <nav class="md-nav" aria-label="responses">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#abp_responses" class="md-nav__link">
-    abp_responses
-  </a>
-  
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#abp_responses-view_responses" class="md-nav__link">
+    abp_responses &amp; view_responses
+  </a>
   
 </li>
       
@@ -1105,7 +1067,7 @@ more features see the <a href="https://spec.openapis.org/oas/v3.0.3#security-sch
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">OpenAPI</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">security_schemes</span><span class="o">=</span><span class="n">security_schemes</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>Second, add pass the <strong>security</strong> to your api, like this:</p>
+<p>Second, add pass the <a href="../Route_Operation/#security"><strong>security</strong></a> to your api, like this:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/book/&lt;int:bid&gt;&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="n">book_tag</span><span class="p">],</span> <span class="n">security</span><span class="o">=</span><span class="n">security</span><span class="p">)</span>
@@ -1114,25 +1076,6 @@ more features see the <a href="https://spec.openapis.org/oas/v3.0.3#security-sch
 </code></pre></div></td></tr></table></div>
 <p>result:</p>
 <p><a class="glightbox" href="../../assets/image-20210525165350520.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image-20210525165350520" src="../../assets/image-20210525165350520.png" /></a></p>
-<h3 id="abp_security">abp_security<a class="headerlink" href="#abp_security" title="Permanent link">⚓︎</a></h3>
-<p><em>New in v0.9.3</em></p>
-<p>You don't need to specify <strong>security</strong> for every api.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">tag</span> <span class="o">=</span> <span class="n">Tag</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;book&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Some Book&quot;</span><span class="p">)</span>
-<span class="n">security</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;jwt&quot;</span><span class="p">:</span> <span class="p">[]}]</span>
-<span class="hll"><span class="n">api</span> <span class="o">=</span> <span class="n">APIBlueprint</span><span class="p">(</span><span class="s1">&#39;/book&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">abp_tags</span><span class="o">=</span><span class="p">[</span><span class="n">tag</span><span class="p">],</span> <span class="n">abp_security</span><span class="o">=</span><span class="n">security</span><span class="p">)</span>
-</span>
-
-<span class="nd">@api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/book&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">create_book</span><span class="p">(</span><span class="n">body</span><span class="p">:</span> <span class="n">BookBody</span><span class="p">):</span>
-    <span class="o">...</span>
-</code></pre></div></td></tr></table></div>
 <h2 id="oauth_config">oauth_config<a class="headerlink" href="#oauth_config" title="Permanent link">⚓︎</a></h2>
 <p><em>New in v0.9.4</em></p>
 <p>You can pass <code>oauth_config</code> when initializing <code>OpenAPI</code>:</p>
@@ -1236,9 +1179,9 @@ more features see the <a href="https://spec.openapis.org/oas/v3.0.3#security-sch
 <span class="k">def</span> <span class="nf">endpoint</span><span class="p">():</span>
     <span class="o">...</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="abp_responses">abp_responses<a class="headerlink" href="#abp_responses" title="Permanent link">⚓︎</a></h3>
+<h2 id="abp_responses-view_responses">abp_responses &amp; view_responses<a class="headerlink" href="#abp_responses-view_responses" title="Permanent link">⚓︎</a></h2>
 <p><em>New in v0.9.4</em></p>
-<p>You can add <code>responses</code> for each API under the <code>api</code> wrapper.</p>
+<p>You can add <code>responses</code> for each API under the <code>api</code> or <code>api_view</code> wrapper.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1253,17 +1196,27 @@ more features see the <a href="https://spec.openapis.org/oas/v3.0.3#security-sch
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Unauthorized</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Unauthorized</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="n">code</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Status Code&quot;</span><span class="p">)</span>
     <span class="n">message</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s2">&quot;Unauthorized!&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Exception Information&quot;</span><span class="p">)</span>
 
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">APIBlueprint</span><span class="p">(</span>
-    <span class="s1">&#39;/book&#39;</span><span class="p">,</span> 
+    <span class="s2">&quot;/book&quot;</span><span class="p">,</span> 
     <span class="vm">__name__</span><span class="p">,</span> 
-    <span class="n">url_prefix</span><span class="o">=</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span>
-<span class="hll">    <span class="n">abp_responses</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;401&quot;</span><span class="p">:</span> <span class="n">Unauthorized</span><span class="p">}</span>
+    <span class="n">url_prefix</span><span class="o">=</span><span class="s2">&quot;/api&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="n">abp_responses</span><span class="o">=</span><span class="p">{</span><span class="mi">401</span><span class="p">:</span> <span class="n">Unauthorized</span><span class="p">}</span>
 </span><span class="p">)</span>
+
+<span class="n">api_view</span> <span class="o">=</span> <span class="n">APIView</span><span class="p">(</span>
+    <span class="s2">&quot;/book&quot;</span><span class="p">,</span>
+    <span class="n">view_responses</span><span class="o">=</span><span class="p">{</span><span class="mi">401</span><span class="p">:</span> <span class="n">Unauthorized</span><span class="p">}</span>
+<span class="p">)</span>
 
 <span class="nd">@api</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">endpoint</span><span class="p">():</span>
@@ -1276,11 +1229,11 @@ more features see the <a href="https://spec.openapis.org/oas/v3.0.3#security-sch
 <p><code>extra_responses</code> have been merged into the <code>responses</code>, and <code>extra_responses</code> will be deprecated in v3.x.</p>
 </div>
 <h2 id="doc_ui">doc_ui<a class="headerlink" href="#doc_ui" title="Permanent link">⚓︎</a></h2>
-<p>You can pass <code>doc_ui=False</code> to disable the <code>OpenAPI spec</code> when init <code>OpenAPI</code>.</p>
+<p>You can pass <code>doc_ui=False</code> to disable the <code>OpenAPI spec</code> when init <a href="../../Reference/OpenAPI/"><code>OpenAPI</code></a>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">OpenAPI</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">doc_ui</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p><em>New in v0.9.4</em></p>
-<p>You can also use <code>doc_ui</code> in endpoint or when initializing <code>APIBlueprint</code>.</p>
+<p>You can also use <code>doc_ui</code> in endpoint or when initializing <a href="../../Reference/APIBlueprint/"><code>APIBlueprint</code></a> or <a href="../../Reference/APIView/"><code>APIView</code></a>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>

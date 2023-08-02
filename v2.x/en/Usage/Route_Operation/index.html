@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tag" class="md-skip">
+        <a href="#tags" class="md-skip">
           Skip to content
         </a>
       
@@ -428,22 +428,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tag" class="md-nav__link">
-    tag
-  </a>
-  
-    <nav class="md-nav" aria-label="tag">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#abp_tags" class="md-nav__link">
-    abp_tags
+  <a href="#tags" class="md-nav__link">
+    tags
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#abp_tags-view_tags" class="md-nav__link">
+    abp_tags &amp; view_tags
+  </a>
   
 </li>
       
@@ -499,6 +493,13 @@
         <li class="md-nav__item">
   <a href="#security" class="md-nav__link">
     security
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abp_security-view_security" class="md-nav__link">
+    abp_security &amp; view_security
   </a>
   
 </li>
@@ -771,22 +772,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tag" class="md-nav__link">
-    tag
-  </a>
-  
-    <nav class="md-nav" aria-label="tag">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#abp_tags" class="md-nav__link">
-    abp_tags
+  <a href="#tags" class="md-nav__link">
+    tags
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#abp_tags-view_tags" class="md-nav__link">
+    abp_tags &amp; view_tags
+  </a>
   
 </li>
       
@@ -847,6 +842,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#abp_security-view_security" class="md-nav__link">
+    abp_security &amp; view_security
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#servers" class="md-nav__link">
     servers
   </a>
@@ -900,7 +902,7 @@
 
   <h1>Route Operation</h1>
 
-<h2 id="tag">tag<a class="headerlink" href="#tag" title="Permanent link">⚓︎</a></h2>
+<h2 id="tags">tags<a class="headerlink" href="#tags" title="Permanent link">⚓︎</a></h2>
 <p>You can also specify tag for apis like this:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -920,9 +922,9 @@
 </code></pre></div></td></tr></table></div>
 <p>and then you will get the magic.</p>
 <p><a class="glightbox" href="../../assets/image-20210525160744617.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image-20210525160744617" src="../../assets/image-20210525160744617.png" /></a></p>
-<h3 id="abp_tags">abp_tags<a class="headerlink" href="#abp_tags" title="Permanent link">⚓︎</a></h3>
+<h2 id="abp_tags-view_tags">abp_tags &amp; view_tags<a class="headerlink" href="#abp_tags-view_tags" title="Permanent link">⚓︎</a></h2>
 <p><em>New in v0.9.3</em></p>
-<p>You don't need to specify <strong>tag</strong> for every api.</p>
+<p>You don't need to specify <strong>tags</strong> for every api.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -930,9 +932,11 @@
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">tag</span> <span class="o">=</span> <span class="n">Tag</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;book&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Some Book&quot;</span><span class="p">)</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">tag</span> <span class="o">=</span> <span class="n">Tag</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;book&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Some Book&quot;</span><span class="p">)</span>
 
 <span class="hll"><span class="n">api</span> <span class="o">=</span> <span class="n">APIBlueprint</span><span class="p">(</span><span class="s1">&#39;/book&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span> <span class="n">abp_tags</span><span class="o">=</span><span class="p">[</span><span class="n">tag</span><span class="p">])</span>
+</span><span class="hll"><span class="n">api_view</span> <span class="o">=</span> <span class="n">APIView</span><span class="p">(</span><span class="s1">&#39;/book&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span> <span class="n">view_tags</span><span class="o">=</span><span class="p">[</span><span class="n">tag</span><span class="p">])</span>
 </span>
 
 <span class="nd">@api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/book&#39;</span><span class="p">)</span>
@@ -1259,6 +1263,27 @@ The example shows setting the default <code>operation_id</code> to be the functi
     <span class="n">security</span><span class="o">=</span><span class="n">security</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_book</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">BookPath</span><span class="p">):</span>
+    <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="abp_security-view_security">abp_security &amp; view_security<a class="headerlink" href="#abp_security-view_security" title="Permanent link">⚓︎</a></h2>
+<p><em>New in v0.9.3</em></p>
+<p>You don't need to specify <strong>security</strong> for every api.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">tag</span> <span class="o">=</span> <span class="n">Tag</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;book&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Some Book&quot;</span><span class="p">)</span>
+<span class="n">security</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;jwt&quot;</span><span class="p">:</span> <span class="p">[]}]</span>
+<span class="hll"><span class="n">api</span> <span class="o">=</span> <span class="n">APIBlueprint</span><span class="p">(</span><span class="s1">&#39;/book&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">abp_tags</span><span class="o">=</span><span class="p">[</span><span class="n">tag</span><span class="p">],</span> <span class="n">abp_security</span><span class="o">=</span><span class="n">security</span><span class="p">)</span>
+</span><span class="hll"><span class="n">api_view</span> <span class="o">=</span> <span class="n">APIView</span><span class="p">(</span><span class="s1">&#39;/book&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">abp_tags</span><span class="o">=</span><span class="p">[</span><span class="n">tag</span><span class="p">],</span> <span class="n">view_security</span><span class="o">=</span><span class="n">security</span><span class="p">)</span>
+</span>
+
+<span class="nd">@api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/book&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">create_book</span><span class="p">(</span><span class="n">body</span><span class="p">:</span> <span class="n">BookBody</span><span class="p">):</span>
     <span class="o">...</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="servers">servers<a class="headerlink" href="#servers" title="Permanent link">⚓︎</a></h2>
